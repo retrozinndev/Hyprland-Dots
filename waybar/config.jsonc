@@ -8,23 +8,22 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-	"hyprland/window",
         "custom/media"
     ],
     "modules-center": [
-	"clock"
+        "hyprland/window",
+    	"clock"
     ],
     "modules-right": [
         "tray", 
-        "backlight", 
-	"pulseaudio",
-	"custom/notifications"
+	    "pulseaudio",
+	    "custom/notifications"
     ],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "warp-on-scroll": true,
+        "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
             "urgent": "",
@@ -33,14 +32,14 @@
         }
     },
     "bluetooth": {
-	"format": " {status}",
-	"format-connected": " {device_alias}",
-	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	    "format": " {status}",
+	    "format-connected": " {device_alias}",
+	    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
     "keyboard-state": {
         "numlock": true,
@@ -53,10 +52,11 @@
     },
     "hyprland/window": {
         "format": "{icon} {count}",
-        "show-empty": false,
+        "show-empty": true,
+        "max-length": 200,
+        "separate-outputs": true,
         "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+        "escape": true
     },
     "custom/notifications": {
     	"tooltip": false,

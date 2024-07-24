@@ -3,7 +3,7 @@
 
 window {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "0xProto Nerd Font Regular", sans-serif, "Font Awesome 5";
+    font-family: "0xProto Nerd Font Regular", "Font Awesome", sans-serif;
     font-size: 12px;
     border-radius: 10px;
     color: @text;
