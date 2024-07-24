@@ -42,15 +42,18 @@ cp -r $HOME/.config/hypr ./
 echo "[info] Organizing:"
 echo "-> Hypridle"
 mkdir -p ./hypridle
-cp ./hypr/hypridle.conf ./hypridle/
+mv ./hypr/hypridle.conf ./hypridle/
 
 echo "-> Hyprlock"
 mkdir -p ./hyprlock
-cp ./hypr/hyprlock.conf ./hyprlock/
+mv ./hypr/hyprlock.conf ./hyprlock/
 
 echo "-> Hyprpaper"
 mkdir ./hyprpaper
-cp ./hypr/hyprpaper.conf ./hyprpaper/
+mv ./hypr/hyprpaper.conf ./hyprpaper/
+
+echo "-> Hyprland: renaming directory"
+mv ./hypr ./hyprland
 
 echo "[info] Copying Waybar..."
 cp -r $HOME/.config/waybar .
@@ -60,6 +63,7 @@ cp -r $HOME/.config/wofi .
 
 echo "[info] Copying Swaync..."
 cp -r $HOME/.config/swaync .
+
 
 printf "\nDone! You may now push this to the dotfiles repo!\n"
 
