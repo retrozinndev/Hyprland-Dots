@@ -1,0 +1,8 @@
+width=600
+height=300
+location=center
+prompt=Search...
+no_actions=true
+allow_images=true
+hide_scroll=true
+gtk_dark=true
