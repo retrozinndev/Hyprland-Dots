@@ -8,27 +8,32 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "custom/media"
+        "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/window",
-    	"clock"
+        "clock",
+        "custom/media"
     ],
     "modules-right": [
         "tray", 
-	    "pulseaudio",
+        "pulseaudio",
 	    "custom/notifications"
     ],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "warp-on-scroll": false,
+        "warp-on-scroll": true,
         "format": "{icon}",
         "format-icons": {
-            "urgent": "",
-            "focused": "",
+            "urgent": "",
+            "focused": "",
+            "active": "",
             "default": ""
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": []
         }
     },
     "bluetooth": {
@@ -46,16 +51,22 @@
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": " ",
+            "unlocked": " "
         }
     },
     "hyprland/window": {
-        "format": "{icon} {count}",
-        "show-empty": true,
-        "max-length": 200,
-        "separate-outputs": true,
-        "format-icons": ["", ""],
+        "format": "{class}: {title}",
+        "show-empty": false,
+        "rewrite": {
+            ": ": "",
+            "firefox(.*)": "Firefox",
+            "(.*)kitty(.*)": "Kitty",
+            "Spotify(.*)": "Spotify",
+            "discord(.*) - Discord": "Discord$1",
+            "org.gnome.(.*)": "$1"
+            
+        },
         "escape": true
     },
     "custom/notifications": {
@@ -112,18 +123,19 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "icon-size": 16,
+        "spacing": 12
     },
     "clock": {
         "timezone": "",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-	"format": "{:L%a. %d, %H:%M}",
+    	"format": "{:L%a. %d, %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": true,
+        "escape": true
     },
     "memory": {
         "format": "{}% "
@@ -183,34 +195,30 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": " {icon}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source": "{volume}%",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "headset": "", 
             "default": ["", "", ""]
         },
-	"exec-if": "which pavucontrol",
+	    "exec-if": "which pavucontrol",
         "on-click": "pavucontrol"
     },
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
         "max-length": 40,
-	"escape": true,
+	    "escape": true,
         "format-icons": {
 	    "firefox": "",
 	    "discord": "",
             "spotify": "",
             "default": "󰎇"
         },
-        "escape": true,
+        
         "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Script in resources folder
 	"on-click": "playerctl --player spotify play-pause" // Change "spotify to your preferred player"
     }
