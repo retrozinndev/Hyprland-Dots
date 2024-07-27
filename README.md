@@ -7,7 +7,10 @@ My personal Hyprland configuration that I use everyday! Some of the colors used 
 </div>
 
 <!-- Demo Video Link -->
-https://github.com/retrozinndev/Hyprland-Dots/raw/main/hypr_demo_video.mp4
+<br>
+
+
+https://github.com/user-attachments/assets/ed4c59b2-078f-4b95-a4d8-3bd9004b8d43
 
 > ⚠️ Notice: This repo is not ready to be used yet. And README.md is also not complete, caution if you try to use this repo!
 
