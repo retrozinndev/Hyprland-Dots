@@ -1,7 +1,7 @@
 # Retrozinndev's Hyprland Dots
 My personal Hyprland configuration that I use everyday! Some of the colors used are from the [Catppuccin Mocha Palette](https://github.com/catppuccin), go check it out, it's awesome!
-
-<div style="display:flex;justify-content:center;align-items:center;" class="screenshot-container">
+<div align="center">
+<div class="screenshot-container">
  <img style="width:49%;" src="repo/screenshot_desktop.png">
  <img style="width:49%;" src="repo/screenshot_usage.png">
 </div>
@@ -9,8 +9,9 @@ My personal Hyprland configuration that I use everyday! Some of the colors used 
 <!-- Demo Video Link -->
 <br>
 
-
 https://github.com/user-attachments/assets/ed4c59b2-078f-4b95-a4d8-3bd9004b8d43
+</div>
+
 
 > ⚠️ Notice: This repo is not ready to be used yet. And README.md is also not complete, caution if you try to use this repo!
 
