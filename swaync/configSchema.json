@@ -407,8 +407,8 @@
           "default": 12
         },
         "blur": {
-          "type": "boolean",
-          "description": "Appy the artwork as the MPRIS background and blur it",
+          "type": "bool",
+          "description": "Apply the artwork as the MPRIS background and blur it",
           "default": true
         }
       }

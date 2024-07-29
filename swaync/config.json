@@ -51,21 +51,19 @@
     "title",
     "volume",
     "backlight",
+    "buttons-grid",
     "mpris",
     "dnd",
     "inhibitors",
     "notifications"
   ],
   "widget-config": {
-    "inhibitors": {
-      "text": "Inhibitors",
-      "button-text": "Clear All",
-      "clear-all-button": true
-    },
     "title": {
-      "text": "Notifications",
-      "clear-all-button": true,
-      "button-text": "Clear All"
+      "text": "Control Center",
+      "clear-all-button": false
+    },
+    "inhibitors": {
+      "text": "Inhibitors"
     },
     "dnd": {
       "text": "Do Not Disturb"
@@ -77,7 +75,7 @@
     "mpris": {
       "image-size": 96,
       "image-radius": 12,
-      "blur": false
+      "blur": true 
     },
     "volume": {
         "label": ""
@@ -87,13 +85,11 @@
     },
     "buttons-grid": {
       "actions": [
-        {
-          "label": "直",
-          "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
-          "update_command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
-        }
+          {
+              "label": "  Power Menu",
+              "type": "normal",
+              "command": "wlogout"
+          }
       ]
     }
   }

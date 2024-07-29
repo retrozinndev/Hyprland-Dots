@@ -1,3 +1,12 @@
+
+
+@define-color background shade(#89b4fa, .2);
+@define-color text #cdd6f4;
+@define-color hover shade(#74c7ec, .1);
+@define-color background-alt #b4befe;
+@define-color slider #89b4fa;
+
+
 * {
   all: unset;
   font-size: 14px;
@@ -20,6 +29,8 @@ slider {
   background-color: #89b4fa;
   border-radius: 50%;
 }
+
+/* Notifications */
 
 .floating-notifications.background .notification-row .notification-background {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
@@ -97,27 +108,21 @@ slider {
   color: #1e1e2e;
 }
 
+/* Control Center */
+
 .control-center {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
   border-radius: 12.6px;
   margin: 18px;
   background-color: #1e1e2e;
   color: #cdd6f4;
-  padding: 16px;
-  padding-top: 14px;
+  padding: 1.5rem;
 }
 
 .control-center .widget-title > label {
   color: #cdd6f4;
-  font-size: 1.3em;
-}
-
-.control-center .widget-title button {
-  border-radius: 7px;
-  color: #cdd6f4;
-  background-color: #313244;
-  box-shadow: inset 0 0 0 1px #45475a;
-  padding: 8px;
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .control-center .widget-title button:hover {
@@ -133,7 +138,7 @@ slider {
 }
 
 .control-center .notification-row .notification-background {
-  border-radius: 7px;
+  border-radius: 16px;
   color: #cdd6f4;
   background-color: #313244;
   box-shadow: inset 0 0 0 1px #45475a;
@@ -307,33 +312,61 @@ slider {
 }
 
 .widget-buttons-grid {
-  padding-top: 1rem;
+  padding-top: 2px;
+  margin-left: 150px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 2.5rem;
+  font-size: 1rem;
+}
+
+.widget-buttons-grid button {
+   padding-right: 2px;
+   background: #313244;
+   padding: 8px;
+   border-radius: 16px;
+}
+
+.widget-buttons-grid button:active {
+    background: blue;
+}
+
+trough {
+    border-radius: 4px;
+}
+
+trough highlight {
+    padding: 5px;
+    border-radius: 4px;
+    background: @slider;
+}
+
+trough:hover {
+    padding: 6px;
+    border-radius: 6px;
 }
 
 .widget-volume {
-  padding-top: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .widget-volume label {
   font-size: 1.5rem;
-  color: #74c7ec;
+  color: @text;
+  margin-left: 5px;
+  margin-right: 6px;
 }
 
-.widget-volume trough highlight {
-  background: #74c7ec;
-}
-
-.widget-backlight trough highlight {
-  background: #f9e2af;
+.widget-backlight {
+    margin-bottom: 1rem;
 }
 
 .widget-backlight label {
   font-size: 1.5rem;
-  color: #f9e2af;
+  margin-left: 7px;
+  margin-right: 3px;
+  color: @text;
 }
 
 .widget-backlight .KB {
