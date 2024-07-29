@@ -2,11 +2,12 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 32, // Waybar height (to be removed for auto height)
+    // "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        "custom/logo",
         "hyprland/workspaces",
         "hyprland/window"
     ],
@@ -68,6 +69,12 @@
             
         },
         "escape": true
+    },
+    "custom/logo": {
+        "format": "", // Change to desired logo
+        "tooltip": false,
+        "escape": true,
+        "on-click": "wofi --show drun -I -a -b" // Change to desired action
     },
     "custom/notifications": {
     	"tooltip": false,
@@ -155,16 +162,15 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
+        "format-good": "{capacity}% {icon}",
         "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
@@ -192,12 +198,11 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}%",
+        "format-source": "{icon} {volume}%",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -218,8 +223,13 @@
             "spotify": "",
             "default": "󰎇"
         },
-        
+        "tooltip": true,
+        "tooltip-format": {
+            "1": "Scroll-Up: Next<br>Scroll-Down: Previous"
+        },
+        "on-scroll-down": "playerctl --player spotify previous",
+        "on-scroll-up": "playerctl --player spotify next",
         "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Script in resources folder
-	"on-click": "playerctl --player spotify play-pause" // Change "spotify to your preferred player"
+    	"on-click": "playerctl --player spotify play-pause" // Change "spotify to your preferred player"
     }
 }
