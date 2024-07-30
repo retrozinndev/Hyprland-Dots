@@ -80,11 +80,6 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
     margin-right: 6px;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: shade(@blue, 0.5);
-}
-
 #workspaces {
     border-radius: 16px;
     padding-left: 2px;
@@ -119,15 +114,6 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 
 #custom-notifications:hover {
     background: alpha(@blue, .5);
-}
-
-#backlight {
-    background: alpha(@base, .3);
-}
-
-#mode {
-    background-color: alpha(@yellow, .3);
-    box-shadow: inset 0 -3px @text;
 }
 
 #clock,
@@ -219,14 +205,12 @@ label:focus {
     color: @text;
 }
 
-#custom-media {
-    background-color: alpha(@base, .3);
-    color: @text;
-    min-width: 100px;
-}
-
 #custom-media.custom-spotify {
     background-color: alpha(shade(@green, .65), .3);
+}
+
+#custom-media.custom-spotify:hover {
+    background: alpha(@green, .3);
 }
 
 #temperature {
