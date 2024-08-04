@@ -65,7 +65,7 @@ echo "[info] Copying Swaync..."
 cp -r $HOME/.config/swaync .
 
 echo "[info] Copying Wlogout..."
-cp -r $HOMR/.config/wlogout .
+cp -r $HOME/.config/wlogout .
 
 printf "\nDone! You may now push this to the dotfiles repo!\n"
 
