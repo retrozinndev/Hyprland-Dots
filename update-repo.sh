@@ -31,7 +31,7 @@ printf "\n"
 
 echo "[info] Cleaning current repo dotfiles..."
 # Modify dirs here when adding something new:
-rm -rf ./wofi/ ./waybar/ ./swaync/ ./hyprland/ ./hyprlock ./hypridle ./hyprpaper
+rm -rf ./wofi/ ./waybar/ ./swaync/ ./wlogout ./hyprland/ ./hyprlock ./hypridle ./hyprpaper
 
 echo "Done cleaning."
 
@@ -64,6 +64,8 @@ cp -r $HOME/.config/wofi .
 echo "[info] Copying Swaync..."
 cp -r $HOME/.config/swaync .
 
+echo "[info] Copying Wlogout..."
+cp -r $HOMR/.config/wlogout
 
 printf "\nDone! You may now push this to the dotfiles repo!\n"
 
