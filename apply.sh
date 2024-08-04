@@ -11,7 +11,7 @@ printf "\n"
 
 CONFIG_DIR="$HOME/.config"
 DOTFILES_DIRS=("hypr" "waybar" "swaync" "wlogout" "wofi")
-DOTFILES_BACKUP_DIR="$HOME/hyprland-dotfiles/bkp"
+DOTFILES_BACKUP_DIR="$HOME/hyprland-dotfiles-bkp"
 
 echo "Welcome to my dotfiles installation script!"
 
@@ -45,9 +45,10 @@ function Apply_wallpaper {
         echo "Thanks for using the wallpaper! Oh, remember that I am not the author!"
         echo "Wallpaper source: https://www.wallpaperflare.com/"
 
-        echo "-> Copying Hyprpaper to ~/.config/hypr"
+        echo "-> Copying Hyprpaper config to ~/.config/hypr"
+        cp -f ./hyprpaper/* $CONFIG_DIR/hypr
         echo "-> Copying wallpapers to ~/wallpapers"
-        mkdir -p wallpapers
+        mkdir -p $HOME/wallpapers
         cp ./wallpapers/* $HOME/wallpapers
     else
         echo "Ok! The wallpaper is yours to choose!"
