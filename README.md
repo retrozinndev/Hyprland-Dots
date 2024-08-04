@@ -9,7 +9,7 @@ My personal Hyprland configuration that I use everyday! Some of the colors used 
 <!-- Demo Video Link -->
 <br>
 
-https://github.com/user-attachments/assets/ed4c59b2-078f-4b95-a4d8-3bd9004b8d43
+https://github.com/user-attachments/assets/f67fbeea-637b-44f3-b935-cfdb82680007
 </div>
 
 
