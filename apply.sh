@@ -19,6 +19,7 @@ echo "Welcome to my dotfiles installation script!"
 echo "WARN! Running this script may cause problems with your system. When continuing, you're confirming that any problem that may happen with your system is of **your** responsability."
 
 function Backup_previous_dotfiles {
+
     echo "Making backup before installing dotfiles..."
     echo "[info] Creating backup dir in $DOTFILES_BACKUP_DIR"
     mkdir $DOTFILES_BACKUP_DIR
@@ -38,8 +39,11 @@ function Backup_previous_dotfiles {
 }
 
 function Apply_wallpaper {
-    echo "Would you also like to apply the Nijika Ijichi wallpaper?"
+
+    echo -n "Would you also like to apply the Nijika Ijichi wallpaper? [y/n] "
     read input_wallpaper
+    printf "\n"
+
     if [[ $input_wallpaper = "y" ]] || [[ $input_wallpaper = "yes" ]]
     then
         echo "Thanks for using the wallpaper! Oh, remember that I am not the author!"
@@ -97,6 +101,7 @@ function Apply_dotfiles {
 
 echo -n "Do you want to install the dotfiles? [y/n] "
 read input
+printf "\n"
 
 if [[ $input = "y" ]] || [[ $input = "yes" ]]
 then
