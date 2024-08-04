@@ -12,6 +12,7 @@ printf "\n"
 CONFIG_DIR="$HOME/.config"
 DOTFILES_DIRS=("hypr" "waybar" "swaync" "wlogout" "wofi")
 DOTFILES_BACKUP_DIR="$HOME/hyprland-dotfiles-bkp"
+TRASH_DIR="$HOME/.local/share/Trash/files"
 
 echo "Welcome to my dotfiles installation script!"
 
@@ -22,7 +23,22 @@ function Backup_previous_dotfiles {
 
     echo "Making backup before installing dotfiles..."
     echo "[info] Creating backup dir in $DOTFILES_BACKUP_DIR"
-    mkdir $DOTFILES_BACKUP_DIR
+    
+    if [[ -d $DOTFILES_BACKUP_DIR ]]
+    then
+        echo "Looks like the backup directory already exists!"
+        echo -n "Would you like to override it with the current configuration? (Will be moved to Trash dir) [y/n] "
+        read override_backup
+        printf "\n"
+        
+        if [[ $override_backup = "y" ]] || [[ $override_backup = "yes" ]]
+        then
+            echo "Ok! The backup folder will be ovewritten with the current user configuration."
+            mv -f $DOTFILES_BACKUP_DIR $TRASH_DIR
+        fi
+    else
+        mkdir $DOTFILES_BACKUP_DIR
+    fi
     
     # Make backup of existing configurations
     for dir in ${DOTFILES_DIRS[@]}; do
