@@ -1,7 +1,5 @@
 
-@import "mocha.css";
-
-@define-color hover shade(@blue, .5);
+@import "_colors.css";
 
 * {
     color: @text;
@@ -21,10 +19,7 @@ window > * {
     margin-left: 4px;
     margin-right: 4px;
     padding: 2px;
-}
-
-window > * {
-    background: alpha(@base, .8);
+    background: @bar;
 }
 
 window#waybar {
@@ -32,32 +27,15 @@ window#waybar {
 }
 
 window#waybar.hidden {
-    opacity: .1;
+    opacity: 0;
 }
-
-/*window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-window#waybar.termite {
-    background-color: alpha(@base, .1);
-}
-window#waybar.chromium {
-    background-color: @base;
-}*/
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    /*box-shadow: inset 0 -3px transparent;*/
-    /* Avoid rounded borders under each button name */
     border: none;
-    background: alpha(@base, .3);
+    background: @background;
     transition: 120ms ease-in;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background-color: @hover;
 }
@@ -90,15 +68,24 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
     color: @text;
     background: transparent;
     font-size: 19px;
-    border-radius: 16px; 
+    border-radius: 16px;
 }
 
-#workspaces button *:hover {
-    background: @base;
+#workspaces button label {
+    margin-top: .2px;
+    margin-left: .1px;
+}
+
+#workspaces button:hover {
+    background: @hover;
 }
 
 #workspaces button.active {
-    background: alpha(shade(@blue, .5), .6);
+    background: @active;
+}
+
+#workspaces button.active label {
+    margin-right: 1px;
 }
 
 #workspaces button.urgent {
@@ -106,14 +93,9 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 }
 
 #custom-notifications {
-    background: alpha(@base, .3);
     font-size: 16px;
     padding-left: 10px;
     padding-right: 12px;
-}
-
-#custom-notifications:hover {
-    background: alpha(@blue, .5);
 }
 
 #clock,
@@ -142,13 +124,11 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 #workspaces {}
 */
 
-#clock {
-    background-color: alpha(@base, .3);
-}
-
-#battery {
-    background-color: alpha(@base, .3);
-    color: @text;
+@keyframes blink {
+    to {
+        background-color: alpha(@crust, .3);
+        color: @orange;
+    }
 }
 
 #battery.charging, #battery.plugged {
@@ -158,13 +138,6 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 
 #battery:not(.plugged):not(.charging) {
     background-color: alpha(@blue, .35);
-}
-
-@keyframes blink {
-    to {
-        background-color: alpha(@crust, .3);
-        color: @orange;
-    }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
@@ -178,51 +151,16 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
     animation-direction: alternate;
 }
 
-label:focus {
-    background-color: shade(@blue, 0.4);
+#custom-media {
+    background: @highlight;
 }
 
-#cpu {
-    background-color: @base;
-    color: @text;
-}
-
-#memory {
-    background-color: @base;
-}
-
-#disk {
-    background-color: @base;
-}
-
-#pulseaudio {
-    background-color: alpha(@base, .3);
-    color: @text;
-}
-
-#wireplumber {
-    background-color: alpha(@base, .3);
-    color: @text;
-}
-
-#custom-media.custom-spotify {
-    background-color: alpha(shade(@green, .65), .3);
-}
-
-#custom-media.custom-spotify:hover {
-    background: alpha(@green, .3);
-}
-
-#temperature {
-    background-color: alpha(@base, .3);
+#custom-media:hover {
+    background: @hover;
 }
 
 #temperature.critical {
     background-color: alpha(@red, .3);
-}
-
-#tray {
-    background-color: alpha(@base, .3);
 }
 
 #tray > .passive {
@@ -232,10 +170,6 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background: alpha(@orange, .3);
-}
-
-#scratchpad {
-    background: alpha(@base, .3);
 }
 
 #scratchpad.empty {
