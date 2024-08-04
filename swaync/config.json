@@ -53,7 +53,6 @@
     "backlight",
     "buttons-grid",
     "mpris",
-    "dnd",
     "inhibitors",
     "notifications"
   ],
@@ -74,8 +73,8 @@
     },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12,
-      "blur": true 
+      "image-radius": 16,
+      "blur": true
     },
     "volume": {
         "label": ""
@@ -86,11 +85,18 @@
     "buttons-grid": {
       "actions": [
           {
-              "label": "  Power Menu",
+              "label": "   Power Menu",
               "type": "normal",
               "command": "wlogout"
+          },
+          {
+              "label": "󰒲   Do Not Disturb",
+              "type": "toggle",
+              "active": false,
+              "command": "swaync-client -d -sw",
+              "update-command": "echo $(swaync-client -D)"
           }
       ]
-    }
+    } 
   }
 }

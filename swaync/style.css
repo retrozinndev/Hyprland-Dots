@@ -1,21 +1,17 @@
 
+@import "_colors.css";
 
-@define-color background shade(#89b4fa, .2);
-@define-color text #cdd6f4;
-@define-color hover shade(#74c7ec, .1);
-@define-color background-alt #b4befe;
-@define-color slider #89b4fa;
-
+/* All */
 
 * {
   all: unset;
   font-size: 14px;
-  font-family: "0xProto Nerd Font Regular";
-  transition: 200ms;
+  font-family: "0xProto Nerd Font Regular", otf-font-awesome, Cantarell, sans-serif;
+  transition: 160ms ease-in;
 }
 
 trough highlight {
-  background: #cdd6f4;
+  background: @highlight;
 }
 
 scale trough {
@@ -26,7 +22,7 @@ scale trough {
 }
 
 slider {
-  background-color: #89b4fa;
+  background: @highlight;
   border-radius: 50%;
 }
 
@@ -114,7 +110,7 @@ slider {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
   border-radius: 12.6px;
   margin: 18px;
-  background-color: #1e1e2e;
+  background: @background;
   color: #cdd6f4;
   padding: 1.5rem;
 }
@@ -253,19 +249,16 @@ slider {
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 16px;
-  background: #313244;
+  background: @background;
   border: 1px solid #45475a;
   box-shadow: none;
 }
 
-.widget-dnd > switch:checked {
-  background: #313244;
-}
-
 .widget-dnd > switch slider {
-  background: #45475a;
+  background: @highlight;
   border-radius: 16px;
   border: 1px solid #6c7086;
+  
 }
 
 .widget-mpris {
@@ -313,22 +306,26 @@ slider {
 
 .widget-buttons-grid {
   padding-top: 2px;
-  margin-left: 150px;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 1rem;
+  margin-left: 75px;
 }
 
 .widget-buttons-grid button {
-   padding-right: 2px;
    background: #313244;
-   padding: 8px;
+   padding: 10px;
    border-radius: 16px;
+   margin: 2px;
+}
+
+.widget-buttons-grid button label {
+  font-size: 0.95rem;
+}
+
+.widget-buttons-grid button:hover {
+    background: @hover;
 }
 
 .widget-buttons-grid button:active {
-    background: blue;
+    background: @active;
 }
 
 trough {
@@ -338,7 +335,7 @@ trough {
 trough highlight {
     padding: 5px;
     border-radius: 4px;
-    background: @slider;
+    background: @highlight;
 }
 
 trough:hover {
