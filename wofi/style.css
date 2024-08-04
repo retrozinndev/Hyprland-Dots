@@ -1,29 +1,29 @@
 
-:root {
-	--base: #1e1e2e;
-	--dark: #1b1b30;
-	--crust: #11111b;
-	--text: #cdd6f4;
-}
+/* background -> #312D23
+ * selected -> #AC8A3D
+ * highlight-low(not-selected) -> #726037
+ */
 
 * {
 	outline: none;
+    font-family: "0xProto Nerd Font Regular", otf-font-awesome, Cantarell, sans-serif;
 }
 
 #outer-box {
-	border: 3px solid #1b1b26;
-	border-radius: 12px;
+	border: 3px solid shade(#312D23, .8);
+	border-radius: 16px;
 }
 
 #window {
-	background-color: #1e1e2e;
-	border-radius: 12px;
+	background-color: #312D23;
+	border-radius: 16px;
 }
 
 #text {
 	font-family: system-ui, sans-serif;
     transition: 50ms ease-in;
     margin-left: 10px;
+    color: white;
 }
 
 #text:selected {
@@ -31,34 +31,24 @@
 }
 
 #input {
-    border: 2px solid darkgray;
-    border-radius: 10px;
+    border: 2px solid shade(#AC8A3D, .8);
+    border-radius: 14px;
 	margin: 4px;
-	background-color: #11111b;
+	background-color: shade(#726037, .7);
     box-shadow: none;
-}
-
-#input:selected {
-    background: white;
-}
-
-#scroll {
-    border-bottom: 1px solid #1b1b26;
-    border-radius: 6px 6px;
 }
 
 #entry {
 	padding: 0 16px;
-	margin: 0px 6px;
-	padding-top: 6px;
-	padding-bottom: 4px;
-	transition: 80ms ease-in;
-	font-size: 1em;
+	margin: 2px 6px;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	transition: 75ms ease-in;
+	font-size: 1.02em;
 	font-weight: 600;
     border-radius: 12px;
 }
 
 #entry:selected {
-	background-color: #38384a;
-	outline: none;
+	background-color: shade(#AC8A3D, .5);
 }
