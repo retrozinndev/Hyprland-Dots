@@ -10,15 +10,31 @@
   transition: 160ms ease-in;
 }
 
-trough highlight {
-  background: @highlight;
-}
-
 scale trough {
   margin: 0rem 1rem;
-  background-color: #313244;
+  background-color: @background-alt;
   min-height: 8px;
   min-width: 70px;
+}
+
+trough {
+    border-radius: 4px;
+}
+
+trough:hover {
+    padding: 4px;
+    border-radius: 6px;
+}
+
+trough > *:active {
+    background: @active;
+    padding: 6px;
+}
+
+trough highlight {
+    padding: 5px;
+    border-radius: 4px;
+    background: @highlight;
 }
 
 slider {
@@ -32,8 +48,8 @@ slider {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
   border-radius: 16px;
   margin: 18px;
-  background-color: #1e1e2e;
-  color: #cdd6f4;
+  background-color: @background;
+  color: @text;
   padding: 0;
 }
 
@@ -55,7 +71,7 @@ slider {
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
-  color: #a6adc8;
+  color: @subtext1;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
@@ -67,9 +83,9 @@ slider {
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
-  border-radius: 16px;
+  border-radius: 14px;
   color: #cdd6f4;
-  background-color: #313244;
+  background-color: @highlight;
   box-shadow: inset 0 0 0 1px #45475a;
   margin: 7px;
 }
@@ -262,14 +278,15 @@ slider {
 }
 
 .widget-mpris {
-  margin-top: 16px; 
+  margin-top: 16px;
 }
 
 .widget-mpris .widget-mpris-player {
-  padding: 16px;
-  background: #45475a;
-  box-shadow: none;
-  border: none;
+  box-shadow: inset 0 0 0 100px rgba(0, 0, 0, .4);
+  padding: 24px;
+  background-color: transparent;
+  padding-bottom: 16px;
+  border-radius: 16px;
   outline: none;
 }
 
@@ -310,10 +327,14 @@ slider {
 }
 
 .widget-buttons-grid button {
-   background: #313244;
+   background: @background-alt;
    padding: 10px;
    border-radius: 16px;
    margin: 2px;
+}
+
+.widget-buttons-grid button .active {
+    background: @active;
 }
 
 .widget-buttons-grid button label {
@@ -326,21 +347,6 @@ slider {
 
 .widget-buttons-grid button:active {
     background: @active;
-}
-
-trough {
-    border-radius: 4px;
-}
-
-trough highlight {
-    padding: 5px;
-    border-radius: 4px;
-    background: @highlight;
-}
-
-trough:hover {
-    padding: 6px;
-    border-radius: 6px;
 }
 
 .widget-volume {

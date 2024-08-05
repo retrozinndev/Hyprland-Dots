@@ -92,9 +92,8 @@
           {
               "label": "󰒲   Do Not Disturb",
               "type": "toggle",
-              "active": false,
               "command": "swaync-client -d -sw",
-              "update-command": "echo $(swaync-client -D)"
+              "update-command": "sh -c '[[ $(swaync-client -D) == \"true\"]] && echo true || echo false'"
           }
       ]
     } 

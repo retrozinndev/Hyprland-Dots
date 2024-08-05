@@ -26,7 +26,7 @@
 @define-color crust #11111b;
 
 @define-color background alpha(shade(@yellow, .2), .98);
-@define-color background-alt shade(@yellow, .7);
+@define-color background-alt shade(@yellow, .3);
 @define-color hover shade(@yellow, .5);
 @define-color active shade(@yellow, .55);
 @define-color highlight shade(@yellow, .9);
