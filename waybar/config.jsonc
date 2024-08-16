@@ -103,24 +103,25 @@
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
-            "on": " "
+            "on": ""
         },
         "random-icons": {
             "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
+            "on": ""
         },
         "repeat-icons": {
-            "on": " "
+            "on": ""
         },
         "single-icons": {
-            "on": "1 "
+            "on": "1"
         },
         "state-icons": {
             "paused": "",
             "playing": ""
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "exec": "mpd"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -215,21 +216,18 @@
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
-        "max-length": 40,
+        "max-length": 50,
 	    "escape": true,
         "format-icons": {
-	    "firefox": "",
-	    "discord": "",
+	        "firefox": "",
+    	    "discord": "",
             "spotify": "",
+            "spotube": " ",
             "default": "󰎇"
-        },
-        "tooltip": true,
-        "tooltip-format": {
-            "1": "Scroll-Up: Next<br>Scroll-Down: Previous"
-        },
+        }, 
         "on-scroll-down": "playerctl --player spotify previous",
         "on-scroll-up": "playerctl --player spotify next",
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
     	"on-click": "playerctl --player spotify play-pause" // Change "spotify to your preferred player"
     }
 }
