@@ -25,8 +25,10 @@
 @define-color mantle #181825;
 @define-color crust #11111b;
 
-@define-color background alpha(shade(@yellow, .2), .98);
+@define-color background shade(@yellow, .2);
 @define-color background-alt shade(@yellow, .3);
-@define-color hover shade(@yellow, .5);
-@define-color active shade(@yellow, .55);
 @define-color highlight shade(@yellow, .9);
+@define-color button-bg shade(@yellow, .72);
+@define-color hover shade(@yellow, .6);
+@define-color active shade(@yellow, .55);
+@define-color text-dark @crust;

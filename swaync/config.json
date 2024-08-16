@@ -77,7 +77,8 @@
       "blur": true
     },
     "volume": {
-        "label": ""
+        "label": "",
+        "collapse-button-label": "⇩"
     },
     "backlight": {
         "label": ""
