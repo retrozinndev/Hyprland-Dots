@@ -9,7 +9,7 @@
 }
 
 window {
-	background-color: alpha(shade(@background, .6), 0.9);
+	background-color: alpha(shade(@background, .6), .6);
 }
 
 button {

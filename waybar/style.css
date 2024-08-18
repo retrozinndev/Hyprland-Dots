@@ -4,26 +4,22 @@
 * {
     color: @text;
     border-radius: 14px;
+    transition: 120ms ease-in;
 }
 
 window {
-    font-family: "0xProto Nerd Font Regular", "Font Awesome", sans-serif;
+    font-family: "Cantarell", "Font Awesome", sans-serif;
     font-size: 12px;
     color: @text;
     border-radius: 16px;
 }
 
-/* Manage "floating" waybar position with paddings */
 window > * {
-    margin-top: 5px;
-    margin-left: 4px;
-    margin-right: 4px;
     padding: 2px;
-    background: @bar;
 }
 
 window#waybar {
-    background-color: transparent;
+    background: @bar;
 }
 
 window#waybar.hidden {
@@ -38,24 +34,6 @@ button {
 
 button:hover {
     background-color: @hover;
-}
-
-widget > * {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    transition: 100ms ease-in;
-}
-
-widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
-    background: @hover;
-}
-
-#custom-logo {
-    padding-left: 12px;
-    padding-right: 18px;
-    font-size: 15.2px;
-    transition: 110ms ease-in;
-    margin-right: 6px;
 }
 
 #workspaces {
@@ -92,10 +70,13 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
     background-color: alpha(shade(@orange, 0.6), .3);
 }
 
-#custom-notifications {
-    font-size: 16px;
-    padding-left: 10px;
-    padding-right: 12px;
+widget > * {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
+    background: @hover;
 }
 
 #clock,
@@ -113,10 +94,13 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#window,
 #power-profiles-daemon,
+#custom-notifications,
+#custom-logo,
 #mpd {
     padding: 0 10px;
-    color: @text;
+    font-weight: 500;
 }
 
 /*
@@ -129,6 +113,20 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
         background-color: alpha(@crust, .3);
         color: @orange;
     }
+}
+
+#custom-logo {
+    padding-left: 12px;
+    padding-right: 18px;
+    font-size: 15.2px;
+    transition: 110ms ease-in;
+    margin-right: 6px;
+}
+
+#custom-notifications {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 12px;
 }
 
 #battery.charging, #battery.plugged {
@@ -152,10 +150,13 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 }
 
 #custom-media {
-    background: @highlight;
+    border: 2px solid @highlight;
+    font-weight: 500;
+    transition: 200ms ease-in;
 }
 
 #custom-media:hover {
+    border: 2px solid transparent;
     background: @hover;
 }
 

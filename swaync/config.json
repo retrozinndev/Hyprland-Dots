@@ -93,8 +93,13 @@
           {
               "label": "󰒲   Do Not Disturb",
               "type": "toggle",
-              "command": "swaync-client -d -sw",
-              "update-command": "sh -c '[[ $(swaync-client -D) == \"true\"]] && echo true || echo false'"
+              "command": "swaync-client -d",
+              "update-command": "swaync-client -D"
+          },
+          {
+              "label": "Change Wallpaper",
+              "type": "normal",
+              "command": "bash -c '$(swaync-client -cp; bash $HOME/.config/hypr/scripts/change-wallpaper.sh)'"
           }
       ]
     } 

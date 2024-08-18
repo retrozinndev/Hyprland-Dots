@@ -1,11 +1,6 @@
-// -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "spacing": 4, 
+    "margin": 5,
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
@@ -20,7 +15,7 @@
         "pulseaudio",
 	    "custom/notifications"
     ],
-    // Modules configuration
+
     "hyprland/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
@@ -74,7 +69,7 @@
         "format": "", // Change to desired logo
         "tooltip": false,
         "escape": true,
-        "on-click": "wofi --show drun -I -a -b" // Change to desired action
+        "on-click": "wofi -s drun" // Change to desired action
     },
     "custom/notifications": {
     	"tooltip": false,
@@ -174,10 +169,7 @@
         "format-good": "{capacity}% {icon}",
         "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
+    }, 
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
@@ -225,9 +217,9 @@
             "spotube": " ",
             "default": "󰎇"
         }, 
-        "on-scroll-down": "playerctl --player spotify previous",
-        "on-scroll-up": "playerctl --player spotify next",
+        "on-scroll-down": "playerctl previous",
+        "on-scroll-up": "playerctl next",
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
-    	"on-click": "playerctl --player spotify play-pause" // Change "spotify to your preferred player"
+    	"on-click": "playerctl play-pause" // Change "spotify to your preferred player"
     }
 }

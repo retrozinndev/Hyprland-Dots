@@ -1,7 +1,7 @@
 
 /* background -> #312D23
- * selected -> #AC8A3D
- * highlight-low(not-selected) -> #726037
+ * highlight -> #AC8A3D
+ * mark(not-selected) -> #726037
  */
 
 * {
@@ -33,7 +33,7 @@
 #input {
     border: 2px solid shade(#AC8A3D, .8);
     border-radius: 14px;
-	margin: 4px;
+	margin: 8px;
 	background-color: shade(#726037, .7);
     box-shadow: none;
 }

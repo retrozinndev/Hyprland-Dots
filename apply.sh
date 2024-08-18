@@ -90,6 +90,9 @@ function Apply_dotfiles {
     cp -f ./hyprlock/* $CONFIG_DIR/hypr
     cp -f ./hypridle/* $CONFIG_DIR/hypr
 
+    echo "-> Installing scripts in ~/.config/hypr/scripts"
+    cp -r ./hyprland/scripts $CONFIG_DIR/hypr
+
 	echo "-> Installing Wofi"
     mkdir -p $CONFIG_DIR/wofi
     cp -f ./wofi/* $CONFIG_DIR/wofi
