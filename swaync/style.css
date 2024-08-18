@@ -268,12 +268,12 @@ tooltip {
 
 .widget-buttons-grid {
     margin-top: 2px;
-    margin-left: 75px;
+    margin-left: 5px;
 }
 
 .widget-buttons-grid button {
     background: @button-bg;
-    padding: 10px;
+    padding: 12px;
     border-radius: 16px;
     margin: 2px;
 }
@@ -293,6 +293,7 @@ tooltip {
 .widget-buttons-grid button label {
     font-size: 0.95rem;
     color: black;
+    font-weight: 500;
 }
 
 .widget-volume trough,
