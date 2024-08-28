@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+HYPRLAND_DOTS_DIRS=("hypr" "swaync" "waybar" "anyrun" "wlogout")
+
 printf "\n"
 
 echo "Running this script will override data in current repo with user configurations."
@@ -31,41 +33,21 @@ printf "\n"
 
 echo "[info] Cleaning current repo dotfiles..."
 # Modify dirs here when adding something new:
-rm -rf ./wofi/ ./waybar/ ./swaync/ ./wlogout ./hyprland/ ./hyprlock ./hypridle ./hyprpaper
+for dir in ${HYPRLAND_DOTS_DIRS[@]}; do
+    if [ -d "./dir" ]; then
+        rm -rf ./dir
+    fi
+done
 
 echo "Done cleaning."
 
-echo "[info] Copying Hyprland dotfiles... (hyprland, hypridle, hyprlock, hyprpaper)"
-cp -r $HOME/.config/hypr ./
-
-
-echo "[info] Organizing:"
-echo "-> Hypridle"
-mkdir -p ./hypridle
-mv ./hypr/hypridle.conf ./hypridle/
-
-echo "-> Hyprlock"
-mkdir -p ./hyprlock
-mv ./hypr/hyprlock.conf ./hyprlock/
-
-echo "-> Hyprpaper"
-mkdir ./hyprpaper
-mv ./hypr/hyprpaper.conf ./hyprpaper/
-
-echo "-> Hyprland: renaming directory"
-mv ./hypr ./hyprland
-
-echo "[info] Copying Waybar..."
-cp -r $HOME/.config/waybar .
-
-echo "[info] Copying Wofi..."
-cp -r $HOME/.config/wofi .
-
-echo "[info] Copying Swaync..."
-cp -r $HOME/.config/swaync .
-
-echo "[info] Copying Wlogout..."
-cp -r $HOME/.config/wlogout .
+for dotsDir in ${HYPRLAND_DOTS_DIRS[@]}; do
+    if [ -d "$HOME/.config/$dotsDir" ]; then 
+        cp -r $HOME/.config/$dotsDir ./$dotsDir
+    else
+        echo "[error] Looks like the ~/.config/$dotsDir dir is in fault! Skipped"
+    fi
+done
 
 printf "\nDone! You may now push this to the dotfiles repo!\n"
 
