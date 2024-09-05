@@ -10,7 +10,7 @@ echo "######################################"
 printf "\n"
 
 CONFIG_DIR="$HOME/.config"
-DOTFILES_DIRS=("hypr" "waybar" "swaync" "wlogout" "wofi")
+DOTFILES_DIRS=("hypr" "waybar" "swaync" "wlogout" "anyrun" "wal")
 DOTFILES_BACKUP_DIR="$HOME/hyprland-dotfiles-bkp"
 TRASH_DIR="$HOME/.local/share/Trash/files"
 
@@ -20,58 +20,64 @@ echo "Welcome to my dotfiles installation script!"
 echo "WARN! Running this script may cause problems with your system. When continuing, you're confirming that any problem that may happen with your system is of **your** responsability."
 
 function Backup_previous_dotfiles {
-
-    echo "Making backup before installing dotfiles..."
-    echo "[info] Creating backup dir in $DOTFILES_BACKUP_DIR"
-    
-    if [[ -d $DOTFILES_BACKUP_DIR ]]
+    echo -n "Would you like to make a backup of the current dotfiles? [y/n] "
+    read make_backup_answer
+    printf "\n"
+    if [[ $make_backup_answer =~ "y" ]]
     then
-        echo "Looks like the backup directory already exists!"
-        echo -n "Would you like to override it with the current configuration? (Will be moved to Trash dir) [y/n] "
-        read override_backup
-        printf "\n"
+        echo "[info] Creating backup dir in $DOTFILES_BACKUP_DIR"
         
-        if [[ $override_backup = "y" ]] || [[ $override_backup = "yes" ]]
+        if [[ -d $DOTFILES_BACKUP_DIR ]]
         then
-            echo "Ok! The backup folder will be ovewritten with the current user configuration."
-            mv -f $DOTFILES_BACKUP_DIR $TRASH_DIR
-        fi
-    else
-        mkdir $DOTFILES_BACKUP_DIR
-    fi
-    
-    # Make backup of existing configurations
-    for dir in ${DOTFILES_DIRS[@]}; do
-        if [[ -d "$CONFIG_DIR/$dir" ]]
-        then
-            echo "-> Making backup of $dir"
-            cp -r "$CONFIG_DIR/$dir" $DOTFILES_BACKUP_DIR
+            echo "Looks like the backup directory already exists!"
+            echo -n "Would you like to override it with the current configuration? (Will be deleted forever) [y/n] "
+            read override_backup
+            
+            if [[ $override_backup = "y" ]] || [[ $override_backup = "yes" ]]
+            then
+                echo "Ok! The backup folder will be ovewritten with the current user configuration."
+                mv -f $DOTFILES_BACKUP_DIR $TRASH_DIR
+            fi
         else
-            echo "[info] Skipping backup of $dir. It does not exist."
+            mkdir $DOTFILES_BACKUP_DIR
         fi
-    done
+        
+        # Make backup of existing configurations
+        for dir in ${DOTFILES_DIRS[@]}; do
+            if [[ -d "$CONFIG_DIR/$dir" ]]
+            then
+                echo "-> Making backup of $dir"
+                cp -r "$CONFIG_DIR/$dir" $DOTFILES_BACKUP_DIR
+            else
+                echo "[info] $dir backup was skipped, because it wasn't found."
+            fi
+        done
 
-	echo "Finished backup."
+        echo "Finished backup!!" 
+
+    else 
+        echo "Fine! Current settings will be overwritten, skipping backup :D"
+
+    fi
 }
 
 function Apply_wallpaper {
 
-    echo -n "Would you also like to apply the Nijika Ijichi wallpaper? [y/n] "
+    echo -n "Would you also like to apply the wallpapers folder? :3 [y/n] "
     read input_wallpaper
     printf "\n"
 
-    if [[ $input_wallpaper = "y" ]] || [[ $input_wallpaper = "yes" ]]
+    if [[ $input_wallpaper =~ "y" ]]
     then
-        echo "Thanks for using the wallpaper! Oh, remember that I am not the author!"
-        echo "Wallpaper source: https://www.wallpaperflare.com/"
-
-        echo "-> Copying Hyprpaper config to ~/.config/hypr"
-        cp -f ./hyprpaper/* $CONFIG_DIR/hypr
+        echo "Thanks for using the wallpapers! Oh, remember that I am not the author of them!"
+        echo "You can see sources on the repo website: https://github.com/retrozinndev/Hyprland-Dots/WALLPAPER_SOURCES.md"
+ 
         echo "-> Copying wallpapers to ~/wallpapers"
         mkdir -p $HOME/wallpapers
         cp ./wallpapers/* $HOME/wallpapers
     else
         echo "Ok! The wallpaper is yours to choose!"
+        echo "Tip: you can change it by creating a directory named \"wallpapers\", on your home dir, put your wallpapers there and press ´SUPER + W´ to select wallpaper :3"
     fi
 }
 
@@ -83,47 +89,25 @@ function Apply_dotfiles {
 
 	printf "Starting dotfiles installation...\n"
 
-	echo "-> Installing Hypr family"
-    # Hypr family(hyprland, hypridle, etc.) steps
-    mkdir -p $CONFIG_DIR/hypr
-    cp -f ./hyprland/* $CONFIG_DIR/hypr
-    cp -f ./hyprlock/* $CONFIG_DIR/hypr
-    cp -f ./hypridle/* $CONFIG_DIR/hypr
-
-    echo "-> Installing scripts in ~/.config/hypr/scripts"
-    mkdir -p $CONFIG_DIR/hypr/scripts
-    cp -f ./hyprland/scripts/* $CONFIG_DIR/hypr/scripts
-
-	echo "-> Installing Wofi"
-    mkdir -p $CONFIG_DIR/wofi
-    cp -f ./wofi/* $CONFIG_DIR/wofi
-
-    echo "-> Installing Sway Notification Center"
-    mkdir -p $CONFIG_DIR/swaync
-    cp -f ./swaync/* $CONFIG_DIR/swaync
-
-    echo "-> Installing Waybar"
-    mkdir -p $CONFIG_DIR/waybar
-    cp -f ./waybar/* $CONFIG_DIR/waybar
-    
-    echo "-> Installing Wlogout Menu"
-    mkdir -p $CONFIG_DIR/wlogout
-    cp -f ./wlogout/* $CONFIG_DIR/wlogout
+	for dir in ${DOTFILES_DIRS[@]}; do
+        echo "-> Installing $dir in $CONFIG_DIR/$dir"
+        mkdir -p $CONFIG_DIR/$dir
+        cp -rf ./$dir $CONFIG_DIR/$dir
+    done
 
     # Ask if user wants to apply repo's default wallpaper
     Apply_wallpaper
 
-    echo "Ah yes! Looks like it's ready to use, yay!"
+    echo "Ah yes! Looks like it's ready to use, yay :3"
     echo "If you find any issue, please report at: https://github.com/retrozinndev/Hyprland-Dots/issues"
-	echo "Thanks for using my dotfiles! I'm really happy with that :3"
+	echo "Thanks for using my dotfiles! I'm really happy about that :3"
     printf "\n"
 }
 
 echo -n "Do you want to install the dotfiles? [y/n] "
 read input
-printf "\n"
 
-if [[ $input = "y" ]] || [[ $input = "yes" ]]
+if [[ $input =~ "y" ]]
 then
 	Apply_dotfiles
 else
