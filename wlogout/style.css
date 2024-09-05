@@ -1,5 +1,6 @@
 
-@import "_colors.css";
+@import "../../.cache/wal/colors-wlogout.css";
+
 
 * {
 	background-image: none;
@@ -14,24 +15,24 @@ window {
 
 button {
     border-radius: 16px;
-    border: 1px solid @border;
-    color: @text;
+    border: 1px solid @color2;
+    color: @foreground;
 	background-color: @background;
     background-position: center;
 	background-size: 30%;
     margin-right: 10px;
     margin-bottom: 10px;
-    transition: 150ms ease-in;
+    transition: 150ms linear;
     font-size: 1.25em;
     font-weight: 700;
 }
 
 button:focus, button:hover {
-	background-color: @hover;
+	background-color: shade(@color1, .75);
 }
 
 button:active {
-    background-color: @active;
+    background-color: @color1;
 }
 
 #logout {
@@ -49,13 +50,3 @@ button:active {
 #reboot {
     background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
 }
-
-/* 
-#lock {
-    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
-}
-
-#hibernate {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-} 
-*/
