@@ -1,39 +1,48 @@
 
-@import "_colors.css";
+@import "../../.cache/wal/colors-waybar.css";
 
 * {
-    color: @text;
+    color: @foreground;
     border-radius: 14px;
     transition: 120ms ease-in;
 }
 
-window {
-    font-family: "Cantarell", "Font Awesome", sans-serif;
-    font-size: 12px;
-    color: @text;
-    border-radius: 16px;
-}
-
-window > * {
-    padding: 2px;
-}
-
 window#waybar {
-    background: @bar;
+    font-family: "Noto Sans", "Font Awesome", sans-serif;
+    font-size: 12px;
+    color: @foreground;
+    border-radius: 16px;
+    background: transparent;
 }
 
 window#waybar.hidden {
     opacity: 0;
 }
 
-button {
-    border: none;
-    background: @background;
-    transition: 120ms ease-in;
+window > * > * {
+    padding: 2px;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: alpha(@background, .65);
+}
+
+.module, .widget {
+    padding: 0 10px;
+    font-weight: 500;
+}
+
+widget > * {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
+    background: @color1;
 }
 
 button:hover {
-    background-color: @hover;
+    background: @color1;
 }
 
 #workspaces {
@@ -43,13 +52,13 @@ button:hover {
 }
 
 #workspaces button {
-    color: @text;
     background: transparent;
     font-size: 19px;
     border-radius: 16px;
 }
 
 #workspaces button label {
+    color: @foreground;
     margin-top: .2px;
     margin-left: .1px;
 }
@@ -62,51 +71,9 @@ button:hover {
     background: @active;
 }
 
-#workspaces button.active label {
-    margin-right: 1px;
-}
-
 #workspaces button.urgent {
-    background-color: alpha(shade(@orange, 0.6), .3);
+    background-color: @color1;
 }
-
-widget > * {
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
-    background: @hover;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#window,
-#power-profiles-daemon,
-#custom-notifications,
-#custom-logo,
-#mpd {
-    padding: 0 10px;
-    font-weight: 500;
-}
-
-/*
-#window,
-#workspaces {}
-*/
 
 @keyframes blink {
     to {
@@ -140,8 +107,8 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: alpha(shade(@orange, 0.5), .3);
-    color: @text;
+    background-color: @color1;
+    color: @foreground;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -149,19 +116,27 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
     animation-direction: alternate;
 }
 
+#bluetooth {
+     font-size: 14px;
+}
+
+#bluetooth.connected {
+    padding-right: 12px;
+}
+
 #custom-media {
-    border: 2px solid @highlight;
+    border: 2px solid @color1;
     font-weight: 500;
     transition: 200ms ease-in;
 }
 
 #custom-media:hover {
     border: 2px solid transparent;
-    background: @hover;
+    background: @color2;
 }
 
 #temperature.critical {
-    background-color: alpha(@red, .3);
+    background-color: @color1;
 }
 
 #tray > .passive {
@@ -170,9 +145,5 @@ widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background: alpha(@orange, .3);
-}
-
-#scratchpad.empty {
-    background-color: transparent;
+    background: @color1;
 }

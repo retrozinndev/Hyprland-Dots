@@ -1,6 +1,8 @@
 {
+    "position": "top",
     "spacing": 4, 
     "margin": 5,
+    "reload_style_on_change": true,
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
@@ -13,13 +15,12 @@
     "modules-right": [
         "tray", 
         "pulseaudio",
+        "bluetooth",
 	    "custom/notifications"
     ],
 
     "hyprland/workspaces": {
-        "disable-scroll": false,
         "all-outputs": true,
-        "warp-on-scroll": true,
         "format": "{icon}",
         "format-icons": {
             "urgent": "",
@@ -30,14 +31,16 @@
         "persistent-workspaces": {
             "1": [],
             "2": []
-        }
+        },
+
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-scroll-up": "hyprctl dispatch workspace e+1"
     },
     "bluetooth": {
-	    "format": " {status}",
-	    "format-connected": " {device_alias}",
-	    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	    "format": "",
+        "format-on": "󰂯",
+	    "format-connected": "󰂱",
+	    "tooltip-format": "{controller_alias}{controller_address}\n\n{num_connections} connected",
 	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
@@ -52,14 +55,17 @@
         }
     },
     "hyprland/window": {
-        "format": "{class}: {title}",
+        "format": "{class}",
         "show-empty": false,
+        "icon": true,
         "rewrite": {
-            ": ": "",
-            "firefox(.*)": "Firefox",
-            "(.*)kitty(.*)": "Kitty",
-            "Spotify(.*)": "Spotify",
-            "discord(.*) - Discord": "Discord$1",
+            "zen-alpha": "Zen Browser",
+            "firefox": "Firefox",
+            "kitty": "Kitty",
+            "spotify": "Spotify",
+            "(.*)spotube": "Spotube",
+            "(.*)discord": "Discord",
+            "(.*)vesktop": "Vesktop",
             "org.gnome.(.*)": "$1"
             
         },
@@ -91,33 +97,11 @@
     	"on-click-right": "swaync-client -d -sw",
     	"escape": true
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": ""
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": ""
-        },
-        "repeat-icons": {
-            "on": ""
-        },
-        "single-icons": {
-            "on": "1"
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)",
-        "exec": "mpd"
-    },
+    "custom/control-center": {
+        "format": "loading control center...",
+        "return-type": "json",
+        "exec": "sh $HOME/.config/waybar/modules/control-center.sh"
+    }, 
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -136,19 +120,19 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": " {usage}%",
         "tooltip": true,
         "escape": true
     },
     "memory": {
-        "format": "{}% "
+        "format": " {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "backlight": {
@@ -192,8 +176,8 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon}",
         "format-muted": " {format_source}",
         "format-source": "{icon} {volume}%",
         "format-icons": {
