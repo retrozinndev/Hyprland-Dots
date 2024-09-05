@@ -1,0 +1,58 @@
+
+@import "_colors.css";
+
+* {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+*:hover {
+    background: none;
+}
+
+window {
+    background: transparent;
+}
+
+entry {
+    padding: 6px;
+    background: @background;
+    border-radius: 16px 16px 0 0;
+    border: 2px solid transparent;
+}
+
+entry:focus, entry:active {
+    border: 2px solid @color2;
+}
+
+entry:hover {
+    background: lightgray;
+}
+
+list {
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    background: @background;
+    padding: 5px;
+}
+
+list > #match {
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+list > #match:hover {
+    transition: 120ms linear;
+    background: shade(@background, .8);
+}
+
+list > #match:selected,
+list > #match:active {
+    background: @active;
+}
+
+box#main {
+    background: transparent;
+}
