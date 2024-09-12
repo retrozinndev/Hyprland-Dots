@@ -1,6 +1,9 @@
 
 @import "../../.cache/wal/colors-waybar.css";
 
+@define-color default-workspace @color1;
+@define-color active-workspace @color2;
+
 * {
     color: @foreground;
     border-radius: 14px;
@@ -45,42 +48,30 @@ button:hover {
     background: @color1;
 }
 
+/* Workspaces */
 #workspaces {
     border-radius: 16px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 4px;
 }
 
 #workspaces button {
-    background: transparent;
-    font-size: 19px;
-    border-radius: 16px;
-}
-
-#workspaces button label {
-    color: @foreground;
-    margin-top: .2px;
-    margin-left: .1px;
-}
-
-#workspaces button:hover {
-    background: @hover;
+    background: @color1;
+    border-radius: 24px;
+    padding: 0 4px;
+    margin: 0 2px;
 }
 
 #workspaces button.active {
-    background: @active;
+    background: @foreground;
+    padding-left: 14px;
+    padding-right: 14px;
 }
 
 #workspaces button.urgent {
-    background-color: @color1;
+    animation: pick-attention;
+    animation-duration: .5s;
 }
-
-@keyframes blink {
-    to {
-        background-color: alpha(@crust, .3);
-        color: @orange;
-    }
-}
+/***/
 
 #custom-logo {
     padding-left: 12px;
@@ -98,22 +89,25 @@ button:hover {
 
 #battery.charging, #battery.plugged {
     color: @text;
-    background-color: alpha(@base, .3);
+    background-color: @background;
 }
 
 #battery:not(.plugged):not(.charging) {
-    background-color: alpha(@blue, .35);
+    background-color: shade(@color1, .68);
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: @color1;
     color: @foreground;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: .5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#network.disconnected {
+    padding-right: 15px;
 }
 
 #bluetooth {
@@ -145,5 +139,29 @@ button:hover {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background: @color1;
+}
+
+@keyframes blink {
+    to {
+        background-color: alpha(@crust, .3);
+        color: @orange;
+    }
+}
+
+@keyframes pick-attention { 
+    25% {
+        background: @color3;
+    }
+
+    50% {
+        background: @color2;
+    }
+
+    75% {
+        background: @color3;
+    }
+
+    100% {
+        background: @color2;
+    }
 }

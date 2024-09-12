@@ -1,5 +1,6 @@
 {
     "position": "top",
+    "layer": "top",
     "spacing": 4, 
     "margin": 5,
     "reload_style_on_change": true,
@@ -14,8 +15,9 @@
     ],
     "modules-right": [
         "tray", 
-        "pulseaudio",
-        "bluetooth",
+        "pulseaudio", 
+        "bluetooth", 
+        "network",
 	    "custom/notifications"
     ],
 
@@ -23,10 +25,10 @@
         "all-outputs": true,
         "format": "{icon}",
         "format-icons": {
-            "urgent": "",
-            "focused": "",
-            "active": "",
-            "default": ""
+            "urgent": "",
+            "focused": "",
+            "active": "",
+            "default": ""
         },
         "persistent-workspaces": {
             "1": [],
@@ -58,6 +60,7 @@
         "format": "{class}",
         "show-empty": false,
         "icon": true,
+        "separate-outputs": true,
         "rewrite": {
             "zen-alpha": "Zen Browser",
             "firefox": "Firefox",
@@ -75,7 +78,7 @@
         "format": "", // Change to desired logo
         "tooltip": false,
         "escape": true,
-        "on-click": "wofi -s drun" // Change to desired action
+        "on-click": "anyrun" // Change to desired action
     },
     "custom/notifications": {
     	"tooltip": false,
@@ -114,10 +117,9 @@
         "spacing": 12
     },
     "clock": {
-        "timezone": "",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
-    	"format": "{:L%a. %d, %H:%M}",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:L%A %d, %H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
     "cpu": {
         "format": " {usage}%",
@@ -130,8 +132,8 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
+        "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
@@ -167,12 +169,15 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "tooltip-format": "<tt>{ifname}\t{ipaddr}\n {bandwidthUpBits}\n {bandwidthDownBits}</tt>",
+        "tooltip-format-disconnected": "<tt>Disconnected</tt>",
+        "tooltip-format-wifi": "<tt>󰤨 {essid}\n {bandwidthUpBits}\n {bandwidthDownBits}</tt>",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-disconnected": "󰤭",
+        "format-alt": "{ipaddr}/{cidr}",
+        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
