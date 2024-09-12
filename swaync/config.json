@@ -69,7 +69,7 @@
     },
     "label": {
       "max-lines": 5,
-      "text": "Label Text"
+      "text": "Label"
     },
     "mpris": {
       "image-size": 96,
@@ -86,20 +86,34 @@
     "buttons-grid": {
       "actions": [
           {
-              "label": "   Power Menu",
-              "type": "normal",
-              "command": "wlogout -b 4"
-          },
-          {
-              "label": "󰒲   Do Not Disturb",
+              "label": "  Internet",
               "type": "toggle",
-              "command": "swaync-client -d",
-              "update-command": "swaync-client -D"
+              "active": true,
+              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli n on || nmcli n off'",
+              "update-command": "sh -c '[[ $(nmcli n c) == full ]] && echo true || echo false'"
           },
           {
-              "label": "Change Wallpaper",
+              "label": "  Bluetooth",
+              "type": "toggle",
+              "active": false,
+              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
+              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') == yes ]] && echo true || echo false'"
+          },
+          {
+              "label": "󰒲   DNDisturb",
+              "type": "toggle",
+              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && swaync-client -dn || swaync-client -df'",
+              "update-command": "sh -c '[[ $(swaync-client -D) == true ]] && echo true || echo false'"
+          },
+          {
+              "label": "󰸉   Wallpaper",
               "type": "normal",
-              "command": "bash -c '$(swaync-client -cp; bash $HOME/.config/hypr/scripts/change-wallpaper.sh)'"
+              "command": "bash -c 'swaync-client -cp; bash $HOME/.config/hypr/scripts/change-wallpaper.sh'"
+          },
+          {
+              "label": "󰗽   Logout",
+              "type": "normal",
+              "command": "wlogout -b 5"
           }
       ]
     } 
