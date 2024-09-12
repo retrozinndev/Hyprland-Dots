@@ -13,26 +13,44 @@ window {
 	background-color: alpha(shade(@background, .6), .6);
 }
 
+window > * > * {
+    border: 2px solid @color2;
+    border-radius: 18.8px;
+}
+
+button:first-child {
+    border-radius: 16px 0 0 16px;
+}
+
 button {
-    border-radius: 16px;
-    border: 1px solid @color2;
+    border-radius: 0;
     color: @foreground;
 	background-color: @background;
     background-position: center;
-	background-size: 30%;
-    margin-right: 10px;
-    margin-bottom: 10px;
+	background-size: 40%;
     transition: 150ms linear;
     font-size: 1.25em;
     font-weight: 700;
+}
+
+button:last-child {
+    border-radius: 0 16px 16px 0;
 }
 
 button:focus, button:hover {
 	background-color: shade(@color1, .75);
 }
 
+button:focus:hover {
+    background-color: @color3;
+}
+
 button:active {
     background-color: @color1;
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
 }
 
 #logout {
