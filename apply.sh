@@ -61,7 +61,7 @@ function Backup_previous_dotfiles {
     fi
 }
 
-function Apply_wallpaper {
+function Apply_wallpapers {
 
     echo -n "Would you also like to apply the wallpapers folder? :3 [y/n] "
     read input_wallpaper
@@ -91,12 +91,11 @@ function Apply_dotfiles {
 
 	for dir in ${DOTFILES_DIRS[@]}; do
         echo "-> Installing $dir in $CONFIG_DIR/$dir"
-        mkdir -p $CONFIG_DIR/$dir
         cp -rf ./$dir $CONFIG_DIR/$dir
     done
 
-    # Ask if user wants to apply repo's default wallpaper
-    Apply_wallpaper
+    # Ask if user wants to apply repo's wallpapers dir
+    Apply_wallpapers
 
     echo "Ah yes! Looks like it's ready to use, yay :3"
     echo "If you find any issue, please report at: https://github.com/retrozinndev/Hyprland-Dots/issues"
