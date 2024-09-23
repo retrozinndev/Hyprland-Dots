@@ -123,7 +123,7 @@ class PlayerManager:
             track_info = "Advertisement"
         elif artist != None and title != None:
             track_info = f"{artist} - {title}"
-            if(artist == "" or artist is " "):
+            if(artist == "" or artist == " "):
                 track_info = f"{title}"
         else:
             track_info = title

@@ -1,9 +1,6 @@
 
 @import "../../.cache/wal/colors-waybar.css";
 
-@define-color default-workspace @color1;
-@define-color active-workspace @color2;
-
 * {
     color: @foreground;
     border-radius: 14px;
@@ -23,40 +20,36 @@ window#waybar.hidden {
 }
 
 window > * > * {
-    padding: 2px;
+    padding: 4px;
 }
 
+/* General */
 .modules-left, .modules-center, .modules-right {
-    background: alpha(@background, .65);
+    background: alpha(@background, .80);
 }
 
-.module, .widget {
+.module {
     padding: 0 10px;
     font-weight: 500;
 }
 
-widget > * {
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-widget > *:hover:not(#window):not(#workspaces):not(#tray):not(#custom-media) {
+widget > *:hover:not(#workspaces):not(#tray):not(#custom-media) {
     background: @color1;
 }
 
 button:hover {
     background: @color1;
 }
+/***/
 
 /* Workspaces */
 #workspaces {
-    border-radius: 16px;
     padding: 4px;
 }
 
 #workspaces button {
     background: @color1;
-    border-radius: 24px;
+    border-radius: 14px;
     padding: 0 4px;
     margin: 0 2px;
 }
@@ -69,7 +62,15 @@ button:hover {
 
 #workspaces button.urgent {
     animation: pick-attention;
-    animation-duration: .5s;
+    animation-duration: 2s;
+}
+
+#workspaces button:first-child {
+    margin-left: 0px;
+}
+
+#workspaces button:last-child {
+    margin-right: 0px;
 }
 /***/
 
@@ -81,18 +82,24 @@ button:hover {
     margin-right: 6px;
 }
 
-#custom-notifications {
+widget #custom-notifications {
     font-size: 16px;
     padding-left: 10px;
     padding-right: 12px;
 }
 
-#battery.charging, #battery.plugged {
+widget #window.empty {
+    margin: 0 0 0 0;
+    padding: 16px 0 0 0;
+}
+
+widget #battery.charging,
+widget #battery.plugged {
     color: @text;
     background-color: @background;
 }
 
-#battery:not(.plugged):not(.charging) {
+widget #battery:not(.plugged):not(.charging) {
     background-color: shade(@color1, .68);
 }
 
@@ -119,14 +126,14 @@ button:hover {
 }
 
 #custom-media {
-    border: 2px solid @color1;
+    box-shadow: none;
+    border: 2px solid @color3;
     font-weight: 500;
     transition: 200ms ease-in;
 }
 
 #custom-media:hover {
-    border: 2px solid transparent;
-    background: @color2;
+    background: @color3;
 }
 
 #temperature.critical {
@@ -143,25 +150,24 @@ button:hover {
 
 @keyframes blink {
     to {
-        background-color: alpha(@crust, .3);
-        color: @orange;
+        color: @color3;
     }
 }
 
 @keyframes pick-attention { 
     25% {
-        background: @color3;
+        background: @color4;
     }
 
     50% {
-        background: @color2;
+        background: @color1;
     }
 
     75% {
-        background: @color3;
+        background: @color4;
     }
 
     100% {
-        background: @color2;
+        background: @color1;
     }
 }

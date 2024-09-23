@@ -6,10 +6,10 @@
     "reload_style_on_change": true,
     "modules-left": [
         "custom/logo",
-        "hyprland/workspaces",
-        "hyprland/window"
+        "hyprland/workspaces"
     ],
     "modules-center": [
+        "hyprland/window",
         "clock",
         "custom/media"
     ],
@@ -36,40 +36,42 @@
         },
 
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "on-scroll-up": "hyprctl dispatch workspace e+1"
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "escape": true
     },
     "bluetooth": {
 	    "format": "",
         "format-on": "󰂯",
 	    "format-connected": "󰂱",
-	    "tooltip-format": "{controller_alias}{controller_address}\n\n{num_connections} connected",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	    "tooltip-format": "󰇄   {controller_alias}\n{controller_address}",
+	    "tooltip-format-connected": "    Controller(s):\n   {controller_alias}\t{controller_address}\n\n󰂱   Devices ( {num_connections} ) :\n   {device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\n",
+    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t󰁹 {device_battery_percentage}%\n"
     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{name} {icon}",
+        "format": "{icon} {name}",
         "format-icons": {
             "locked": " ",
             "unlocked": " "
         }
     },
     "hyprland/window": {
-        "format": "{class}",
+        "format": "{class} - {title}",
         "show-empty": false,
         "icon": true,
         "separate-outputs": true,
         "rewrite": {
-            "zen-alpha": "Zen Browser",
-            "firefox": "Firefox",
-            "kitty": "Kitty",
-            "spotify": "Spotify",
-            "(.*)spotube": "Spotube",
-            "(.*)discord": "Discord",
-            "(.*)vesktop": "Vesktop",
-            "org.gnome.(.*)": "$1"
+            " - ": "",
+            "zen-alpha(.*)": "Zen Browser",
+            "firefox(.*)": "Firefox",
+            "kitty - (.*)": "Kitty - $1",
+            "spotify(.*)": "Spotify",
+            "spotube": "Spotube",
+            "discord - Discord (.*)": "Discord $1",
+            "vesktop - Discord (.*)": "Vesktop $1",
+            "org.gnome.(.*) - (.*)": "$1 - $2"
             
         },
         "escape": true
@@ -103,7 +105,7 @@
     "custom/control-center": {
         "format": "loading control center...",
         "return-type": "json",
-        "exec": "sh $HOME/.config/waybar/modules/control-center.sh"
+        "exec": "bash $HOME/.config/waybar/modules/control-center.sh"
     }, 
     "idle_inhibitor": {
         "format": "{icon}",
@@ -203,12 +205,12 @@
 	        "firefox": "",
     	    "discord": "",
             "spotify": "",
-            "spotube": " ",
+            "spotube": "",
             "default": "󰎇"
         }, 
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
         "on-scroll-down": "playerctl previous",
         "on-scroll-up": "playerctl next",
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
-    	"on-click": "playerctl play-pause" // Change "spotify to your preferred player"
+    	"on-click": "playerctl play-pause"
     }
 }
