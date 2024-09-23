@@ -4,7 +4,7 @@
 * {
     all: unset;
     font-size: 14px;
-    font-family: Cantarell, otf-font-awesome, sans-serif;
+    font-family: Cantarell, otf-font-awesome, "Noto Sans CJK", sans-serif;
     transition: 160ms ease-in;
 }
 
@@ -112,9 +112,10 @@ tooltip {
 
 .control-center .notification-row .notification-background .notification .notification-content {
   margin: 8px;
-
+  font-family: Cantarell, "Noto Sans CJK"
 }
 .control-center .notification-row .notification-background .notification .notification-content .summary {
+  font-family: Cantarell, "Noto Sans CJK";
   color: #cdd6f4;
   font-size: 1.2em;
   font-weight: 600;
