@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 HYPRLAND_DOTS_DIRS=("hypr" "swaync" "waybar" "anyrun" "wlogout" "wal")
+WALLPAPERS_DIR="$HOME/wallpapers"
 
 printf "\n"
 
@@ -67,12 +68,17 @@ Check_existance() {
 
 Update_local() {
     for dotsDir in ${HYPRLAND_DOTS_DIRS[@]}; do
-        if [[ -d "$HOME/.config/$dotsDir" ]] then 
+        if [[ -d "$HOME/.config/$dotsDir" ]]; then 
             cp -r $HOME/.config/$dotsDir ./$dotsDir
         else
             Send_log "warn" "Looks like the ~/.config/$dotsDir dir is in fault! Skipping it..."
         fi
     done
+
+    if [[ -d "$WALLPAPERS_DIR" ]]; then
+        Send_log "info" "Copying wallpapers"
+        cp -r $WALLPAPERS_DIR ./wallpapers/
+    fi
 
     printf "\nDone updating local repo!\n"
 }
