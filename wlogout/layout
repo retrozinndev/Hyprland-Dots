@@ -24,7 +24,7 @@
 }
 {
     "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
+    "action" : "loginctl terminate-user $USER && killall sddm",
     "text" : "Logout",
     "keybind" : "e"
 }
