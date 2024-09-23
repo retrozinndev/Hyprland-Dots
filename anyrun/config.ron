@@ -7,7 +7,7 @@ Config (
     ignore_exclusive_zones: false,
     layer: Overlay,
     show_results_immediately: true,
-    max_entries: None,
+    max_entries: Some(8),
     close_on_click: true,
     hide_plugin_info: true,
 
