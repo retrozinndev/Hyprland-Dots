@@ -86,7 +86,7 @@
     "buttons-grid": {
       "actions": [
           {
-              "label": "  Internet",
+              "label": "    Internet",
               "type": "toggle",
               "active": true,
               "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli n on || nmcli n off'",
