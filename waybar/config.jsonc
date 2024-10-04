@@ -18,7 +18,7 @@
         "pulseaudio", 
         "bluetooth", 
         "network",
-	    "custom/notifications"
+        "custom/notifications"
     ],
 
     "hyprland/workspaces": {
@@ -34,11 +34,11 @@
             "1": [],
             "2": []
         },
-
         "on-scroll-down": "hyprctl dispatch workspace e-1",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "escape": true
     },
+
     "bluetooth": {
 	    "format": "",
         "format-on": "󰂯",
@@ -46,8 +46,10 @@
 	    "tooltip-format": "󰇄   {controller_alias}\n{controller_address}",
 	    "tooltip-format-connected": "    Controller(s):\n   {controller_alias}\t{controller_address}\n\n󰂱   Devices ( {num_connections} ) :\n   {device_enumerate}",
 	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}\n",
-    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t󰁹 {device_battery_percentage}%\n"
+	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t󰁹 {device_battery_percentage}%\n",
+        "on-click": "blueberry" // Change to preferred bluetooth manager
     },
+
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -57,6 +59,7 @@
             "unlocked": " "
         }
     },
+
     "hyprland/window": {
         "format": "{class} - {title}",
         "show-empty": false,
@@ -66,22 +69,24 @@
             " - ": "",
             "zen-alpha(.*)": "Zen Browser",
             "firefox(.*)": "Firefox",
-            "kitty - (.*)": "Kitty - $1",
+            "kitty - (.*)": "Kitty $1",
+            "Kitty ~": "Kitty",
             "spotify(.*)": "Spotify",
             "spotube": "Spotube",
             "discord - Discord (.*)": "Discord $1",
-            "vesktop - Discord (.*)": "Vesktop $1",
+            "vesktop -(.*)Discord (.*)": "Vesktop $2",
             "org.gnome.(.*) - (.*)": "$1 - $2"
-            
         },
         "escape": true
     },
+
     "custom/logo": {
         "format": "", // Change to desired logo
         "tooltip": false,
         "escape": true,
         "on-click": "anyrun" // Change to desired action
     },
+
     "custom/notifications": {
     	"tooltip": false,
     	"format": "{icon}",
@@ -102,11 +107,13 @@
     	"on-click-right": "swaync-client -d -sw",
     	"escape": true
     },
+
     "custom/control-center": {
         "format": "loading control center...",
         "return-type": "json",
         "exec": "bash $HOME/.config/waybar/modules/control-center.sh"
     }, 
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -114,15 +121,18 @@
             "deactivated": ""
         }
     },
+
     "tray": {
         "icon-size": 16,
         "spacing": 12
     },
+
     "clock": {
         "format": "{:L%A %d, %H:%M}",
         "format-alt": "{:%Y-%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+        "tooltip-format": "<tt>{calendar}</tt>"
     },
+
     "cpu": {
         "format": " {usage}%",
         "tooltip": true,
@@ -181,31 +191,37 @@
         "format-alt": "{ipaddr}/{cidr}",
         "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
     },
-    "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": " {format_source}",
-        "format-source": "{icon} {volume}%",
+    "pulseaudio": { 
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}󰂯",
+        "format-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "", 
-            "default": ["", "", ""]
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
         },
-	    "exec-if": "which pavucontrol",
+        "scroll-step": 1,
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{icon} {0}",
         "return-type": "json",
         "max-length": 50,
 	    "escape": true,
         "format-icons": {
+            "mpv": "",
 	        "firefox": "",
     	    "discord": "",
             "spotify": "",
             "spotube": "",
+            "Clapper": "󱜅",
             "default": "󰎇"
         }, 
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",

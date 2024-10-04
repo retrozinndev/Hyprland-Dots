@@ -88,9 +88,9 @@ widget #custom-notifications {
     padding-right: 12px;
 }
 
-widget #window.empty {
+window#waybar.empty #window {
     margin: 0 0 0 0;
-    padding: 16px 0 0 0;
+    padding: 0 0 0 0;
 }
 
 widget #battery.charging,
