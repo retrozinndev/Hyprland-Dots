@@ -24,6 +24,7 @@
     "hyprland/workspaces": {
         "all-outputs": true,
         "format": "{icon}",
+        "show-special": true,
         "format-icons": {
             "urgent": "",
             "focused": "",
@@ -75,7 +76,9 @@
             "spotube": "Spotube",
             "discord - Discord (.*)": "Discord $1",
             "vesktop -(.*)Discord (.*)": "Vesktop $2",
-            "org.gnome.(.*) - (.*)": "$1 - $2"
+            "org.gnome.(.*) - (.*)": "$1 - $2",
+            "steam - (.*)": "Steam - $1",
+            "steam - Steam": "Steam"
         },
         "escape": true
     },

@@ -65,6 +65,10 @@ button:hover {
     animation-duration: 2s;
 }
 
+#workspace button.special {
+    background: @color3;
+}
+
 #workspaces button:first-child {
     margin-left: 0px;
 }
@@ -89,8 +93,7 @@ widget #custom-notifications {
 }
 
 window#waybar.empty #window {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+    padding: 0;
 }
 
 widget #battery.charging,
