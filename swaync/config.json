@@ -48,18 +48,19 @@
     }
   },
   "widgets": [
-    "title",
+    "label",
     "volume",
     "backlight",
     "buttons-grid",
     "mpris",
     "inhibitors",
+    "title",
     "notifications"
   ],
   "widget-config": {
     "title": {
-      "text": "Control Center",
-      "clear-all-button": false
+      "text": "Notifications",
+      "clear-all-button": true
     },
     "inhibitors": {
       "text": "Inhibitors"
@@ -69,7 +70,7 @@
     },
     "label": {
       "max-lines": 5,
-      "text": "Label"
+      "text": "Control Center"
     },
     "mpris": {
       "image-size": 96,

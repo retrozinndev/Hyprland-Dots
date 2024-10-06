@@ -155,14 +155,15 @@ tooltip {
 
 .control-center .widget-title > label {
   color: @text;
-  font-size: 1.5em;
+  font-size: 1.6em;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.control-center .widget-title button label {
-    color: @text;
-    border: 1px solid @yellow;
+.control-center .widget-title button {
+    border-radius: 8px;
+    background: @bg-button;
+    padding: 6px 8px;
 }
 
 .control-center .widget-title button:hover {
@@ -171,6 +172,11 @@ tooltip {
 
 .control-center .widget-title button:active {
   background-color: @active;
+}
+
+.control-center .widget-title button label {
+    color: @foreground;
+    font-weight: 600;
 }
 
 .control-center-dnd {
@@ -264,8 +270,9 @@ tooltip {
 }
 
 .control-center .widget-label > label {
-  color: #cdd6f4;
-  font-size: 2rem;
+  color: @foreground;
+  font-weight: 600;
+  font-size: 1.6em;
 }
 
 
@@ -309,13 +316,6 @@ tooltip {
     padding: 4px;
 }
 
-.widget-volume trough:hover, 
-.widget-volume trough:active,
-.widget-backlight trough:hover,
-.widget-backlight trough:active {
-    padding: 6px;
-    border-radius: 10.5px;
-}
 .widget-volume trough slider,
 .widget-backlight trough slider { /* slider's dot indicator */
     background: shade(@text, .9);
