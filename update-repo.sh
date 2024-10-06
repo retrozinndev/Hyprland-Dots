@@ -77,7 +77,7 @@ Update_local() {
 
     if [[ -d "$WALLPAPERS_DIR" ]]; then
         Send_log "info" "Copying wallpapers"
-        cp -r $WALLPAPERS_DIR ./wallpapers/
+        cp -rf $WALLPAPERS_DIR/* ./wallpapers
     fi
 
     printf "\nDone updating local repo!\n"
