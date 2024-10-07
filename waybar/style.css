@@ -31,13 +31,10 @@ window > * > * {
 .module {
     padding: 0 10px;
     font-weight: 500;
+    margin: 0 1px;
 }
 
 widget > *:hover:not(#workspaces):not(#tray):not(#custom-media) {
-    background: @color1;
-}
-
-button:hover {
     background: @color1;
 }
 /***/
@@ -94,6 +91,7 @@ widget #custom-notifications {
 
 window#waybar.empty #window {
     padding: 0;
+    margin: 0;
 }
 
 widget #battery.charging,

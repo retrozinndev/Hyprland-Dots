@@ -1,7 +1,7 @@
 {
     "position": "top",
     "layer": "top",
-    "spacing": 4, 
+    "spacing": 0, 
     "margin": 5,
     "reload_style_on_change": true,
     "modules-left": [
