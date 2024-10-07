@@ -98,7 +98,7 @@
               "type": "toggle",
               "active": false,
               "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
-              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') == yes ]] && echo true || echo false'"
+              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') == 'yes' ]] && echo 'true' || echo 'false''"
           },
           {
               "label": "󰒲   DNDisturb",

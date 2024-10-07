@@ -153,6 +153,10 @@ tooltip {
   padding: 1.5rem;
 }
 
+.control-center .widget-title {
+    padding: 1rem .2rem;
+}
+
 .control-center .widget-title > label {
   color: @text;
   font-size: 1.6em;
@@ -177,6 +181,16 @@ tooltip {
 .control-center .widget-title button label {
     color: @foreground;
     font-weight: 600;
+}
+
+.control-center .widget-label {
+    padding: .2rem;
+}
+
+.control-center .widget-label > label {
+  color: @foreground; 
+  font-weight: 600;
+  font-size: 1.6em;
 }
 
 .control-center-dnd {
@@ -268,13 +282,6 @@ tooltip {
 .screenshot-buttons button:hover {
   background: #313244;
 }
-
-.control-center .widget-label > label {
-  color: @foreground;
-  font-weight: 600;
-  font-size: 1.6em;
-}
-
 
 .widget-buttons-grid {
     margin-top: 2px;
