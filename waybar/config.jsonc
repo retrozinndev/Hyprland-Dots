@@ -78,7 +78,8 @@
             "vesktop -(.*)Discord (.*)": "Vesktop $2",
             "org.gnome.(.*) - (.*)": "$1 - $2",
             "steam - (.*)": "Steam - $1",
-            "steam - Steam": "Steam"
+            "steam - Steam": "Steam",
+            "net.nokyan.Resources - Resources": "Resources"
         },
         "escape": true
     },
