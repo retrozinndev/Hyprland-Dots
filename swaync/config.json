@@ -79,7 +79,10 @@
     },
     "volume": {
         "label": "",
-        "collapse-button-label": "⇩"
+        "show-per-app": true,
+        "show-per-app-icon": true,
+        "expand-button-label": "",
+        "collapse-button-label": ""
     },
     "backlight": {
         "label": ""
@@ -89,7 +92,7 @@
           {
               "label": "    Internet",
               "type": "toggle",
-              "active": true,
+              "active": false,
               "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli n on || nmcli n off'",
               "update-command": "sh -c '[[ $(nmcli n c) == full ]] && echo true || echo false'"
           },
@@ -97,8 +100,8 @@
               "label": "  Bluetooth",
               "type": "toggle",
               "active": false,
-              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power on || bluetoothctl power off'",
-              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') == 'yes' ]] && echo 'true' || echo 'false''"
+              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power off || bluetoothctl power on'",
+              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') =~ true ]] && echo true || echo false'"
           },
           {
               "label": "󰒲   DNDisturb",
@@ -110,6 +113,11 @@
               "label": "󰸉   Wallpaper",
               "type": "normal",
               "command": "bash -c 'swaync-client -cp; bash $HOME/.config/hypr/scripts/change-wallpaper.sh'"
+          },
+          {
+              "label": "   Screenshot",
+              "type": "normal",
+              "command": "sh -c 'swaync-client -cp; hyprshot -m region -o $HOME/Screenshots'"
           },
           {
               "label": "󰗽   Logout",

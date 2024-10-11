@@ -31,7 +31,7 @@ tooltip {
 }
 
 .notification-row .notification-background .notification.critical {
-    border: 2px solid @yellow;
+    border: 2px solid @color2;
 }
 
 .notification-row .notification-background .notification {
@@ -42,7 +42,7 @@ tooltip {
   font-size: 1.2em;
   margin-bottom: 2px;
   font-weight: 600;
-  color: @text;
+  color: @foreground;
 }
 
 .notification-row .notification-background .notification .notification-content .time {
@@ -97,8 +97,7 @@ tooltip {
 
 .control-center .notification-row .notification-background {
   border-radius: 16px;
-  background-color: @background-alt;
-  border: 1px solid @yellow;
+  background-color: @color1;
   margin-top: 14px;
 }
 
@@ -107,7 +106,8 @@ tooltip {
 }
 
 .control-center .notification-row .notification-background .notification.critical {
-  border: 2px solid @highlight;
+  box-shadow: inset 0 0 0px 2px @color3;
+  border: none;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content {
@@ -116,36 +116,33 @@ tooltip {
 }
 .control-center .notification-row .notification-background .notification .notification-content .summary {
   font-family: Cantarell, "Noto Sans CJK";
-  color: #cdd6f4;
+  color: @foreground;
   font-size: 1.2em;
   font-weight: 600;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .time {
-  color: #a6adc8;
+  color: @foreground;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .body {
-  color: #cdd6f4;
+  color: @foreground;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * {
   min-height: 3.4em;
 }
 
-.notification.critical progress {
-  background-color: #f38ba8;
-}
-
+.notification.critical progress,
 .notification.low progress,
 .notification.normal progress {
-  background-color: #89b4fa;
+  background-color: @color3;
 }
 
 /* Control Center */
 
 .control-center {
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
+  box-shadow: 0 2 10px 1px black, inset 0 0 0px 2px shade(@background, 2);
   border-radius: 12.6px;
   margin: 18px;
   background: @background;
@@ -303,8 +300,12 @@ tooltip {
     background: @active;
 }
 
+.widget-buttons-grid button:checked {
+    background: @color3;
+}
+
 .widget-buttons-grid button label {
-    font-size: 0.95rem;
+    font-size: 1em;
     color: @text;
     font-weight: 600;
 }
@@ -313,10 +314,26 @@ tooltip {
     color: blue;
 }
 
+.widget-volume .per-app-volume {
+    margin-top: 4px;
+    padding: 6px;
+    border-radius: 6px;
+    background: shade(@background, .6);
+}
+
+.widget-volume .per-app-volume > * > * > * {
+    margin-right: 0;
+}
+
+.widget-volume .per-app-volume > * > * > * + * {
+    margin-left: -5px;
+    margin-right: -10px;
+}
+
 .widget-volume trough,
 .widget-backlight trough { /* slider's background */
     margin: 0 1.2rem;
-    background-color: @background-alt;
+    background-color: shade(@color1, .4);
     min-height: 8px;
     min-width: 70px;
     border-radius: 14px;
@@ -333,7 +350,7 @@ tooltip {
 .widget-volume trough slider:active,
 .widget-backlight trough slider:active {
     padding: 10px;
-    background: shade(@text, .75);
+    background: shade(@foreground, .75);
 }
 
 .widget-volume trough highlight,
