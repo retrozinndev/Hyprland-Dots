@@ -35,6 +35,11 @@ In order to install this style right away, just run this installation script:
 ### ❔ How to Use
 See usage and other relevant info on the [Wiki].
 
+### 🎉 Apps
+- Browser: [Zen Browser], with [Pywalfox](https://github.com/Frewacom/pywalfox) and [PywalZen](https://zen-browser.app/themes/d2953516-d239-4ef8-aac5-b238e3dc0360)(for compatibility)
+- Text Editor: [Neovim], see my config [here](https://github.com/retrozinndev/nvim-conf.lua)
+- See more on the [wiki]!
+
 ## ❗ Issues
 Got any issue? Please create a [new Issue], I'll be happy for helping you out!
 
@@ -45,6 +50,8 @@ This repo is licensed under the [GNU General Public License 3.0].
 <!-- References(Other repos / websites) -->
 [pywal]: https://github.com/dylanaraps/pywal
 [gnu general public license 3.0]: https://www.gnu.org/licenses/gpl-3.0.pt.html#license-text
+[zen browser]: https://zen-browser.app
+[neovim]: https://neovim.io
 
 <!-- Tabs -->
 [wiki]: https://github.com/retrozinndev/Hyprland-Dots/wiki
