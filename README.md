@@ -26,7 +26,7 @@ In order to install this style right away, just run this installation script:
 
 > ℹ️ Notice: the installation script will make a backup folder containing all previous files in `~/hyprland-dots-bkp`.
 
-> ❕ Tip: Note the `$` character means that it's recommended to run this command without root privileges.
+> 💡 Tip: Note the `$` character means that it's recommended to run this command without root privileges.
 
 ```nushell
  $ git clone "https://github.com/retrozinndev/Hyprland-Dots.git"; cd Hyprland-Dots; bash apply.sh
