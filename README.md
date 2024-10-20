@@ -44,12 +44,12 @@ See usage and other relevant info on the [Wiki].
 Got any issue? Please create a [new Issue], I'll be happy for helping you out!
 
 ## 📜 License
-This repo is licensed under the [GNU General Public License 3.0].
+This repo is licensed under the [MIT License].
 
 
 <!-- References(Other repos / websites) -->
 [pywal]: https://github.com/dylanaraps/pywal
-[gnu general public license 3.0]: https://www.gnu.org/licenses/gpl-3.0.pt.html#license-text
+[mit license]: https://en.wikipedia.org/wiki/MIT_License
 [zen browser]: https://zen-browser.app
 [neovim]: https://neovim.io
 
