@@ -36,8 +36,8 @@ In order to install this style right away, just run this installation script:
 See usage and other relevant info on the [Wiki].
 
 ### 🎉 Apps
-- Browser: [Zen Browser], with [Pywalfox](https://github.com/Frewacom/pywalfox) and [PywalZen](https://zen-browser.app/themes/d2953516-d239-4ef8-aac5-b238e3dc0360)(for compatibility)
-- Text Editor: [Neovim], see my config [here](https://github.com/retrozinndev/nvim-conf.lua)
+- Browser: [Zen Browser]
+- Text Editor: [Neovim], my config is [here](https://github.com/retrozinndev/nvim-conf.lua)
 - See more on the [wiki]!
 
 ## ❗ Issues
