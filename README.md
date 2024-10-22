@@ -8,10 +8,12 @@ My customized Hyprland configuration that I use everyday!
  <img width=48% src="repo/screenshot_tools.png">
  <img width=48% src="repo/screenshot_usage.png">
 </div>
-<br>
- 
-https://github.com/user-attachments/assets/f67fbeea-637b-44f3-b935-cfdb82680007
+ <br>
+
+ https://github.com/user-attachments/assets/6da4ee8f-56d0-4b2e-9ce7-5d721ad9c943
 </div>
+<br>
+
 
 ## 🎨 Colors
 All the colors are dynamically based on the current wallpaper! This is possible by using [pywal], a cli tool to generate colorschemes by using an image as a base.
