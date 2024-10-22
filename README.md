@@ -11,6 +11,8 @@ My customized Hyprland configuration that I use everyday!
  <br>
 
  https://github.com/user-attachments/assets/6da4ee8f-56d0-4b2e-9ce7-5d721ad9c943
+
+ <p>(for some reason I was nervous when recording this lol)</p>
 </div>
 <br>
 
