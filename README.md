@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/f67fbeea-637b-44f3-b935-cfdb82680007
 All the colors are dynamically based on the current wallpaper! This is possible by using [pywal], a cli tool to generate colorschemes by using an image as a base.
 
 ## 🖼️ Wallpapers
-When you're at the [Installation] process, you can choose to copy my dotfiles' wallpapers folder. If you chose to copy, you can change the current wallpaper by pressing <kbd>SUPER</kbd> + <kbd>W</kbd>, or clicking to change wallpaper in the Control Center.
+When you're at the [Installation](#Installation) process, you can choose to copy my dotfiles' wallpapers folder. If you chose to copy, you can change the current wallpaper by pressing <kbd>SUPER</kbd> + <kbd>W</kbd>, or clicking to change wallpaper in the Control Center.
 
 ## Installation
 You'll need to have installed all needed packages before installing my dotfiles! Use your package manager to do so. See needed packages on [`Wiki/Dependencies`].
