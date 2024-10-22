@@ -1,5 +1,5 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "$schema": "configSchema.json",
   "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
@@ -43,7 +43,6 @@
   "notification-visibility": {
     "spotify": {
       "state": "muted",
-      "urgency": "Low",
       "app-name": "Spotify"
     }
   },
@@ -100,8 +99,8 @@
               "label": "  Bluetooth",
               "type": "toggle",
               "active": false,
-              "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && bluetoothctl power off || bluetoothctl power on'",
-              "update-command": "sh -c '[[ $(bluetoothctl show | grep Powered | sed 's/Powered: //') =~ true ]] && echo true || echo false'"
+              "command": "sh -c 'sh $HOME/.config/swaync/scripts/control-center/bluetooth-toggle.sh Toggle_state'",
+              "update-command": "sh -c 'echo $(sh $HOME/.config/swaync/scripts/control-center/bluetooth-toggle.sh) Update_state'"
           },
           {
               "label": "󰒲   DNDisturb",
