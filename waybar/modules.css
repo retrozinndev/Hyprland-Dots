@@ -1,0 +1,140 @@
+
+@import "./animations.css";
+
+/* Distro Logo */
+#custom-logo {
+    padding-left: 12px;
+    padding-right: 18px;
+    font-size: 15.2px;
+    transition: 110ms ease-in;
+    margin-right: 6px;
+}
+
+
+/* Workspace Indicator */
+#workspaces {
+    padding: 4px;
+}
+
+#workspaces button {
+    background: @color1;
+    border-radius: 14px;
+    padding: 0 4px;
+    margin: 0 2px;
+}
+
+#workspaces button.active {
+    background: @foreground;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#workspaces button.urgent {
+    animation: pick-attention;
+    animation-duration: 2s;
+}
+
+#workspace button.special {
+    background: @color3;
+}
+
+#workspaces button:first-child {
+    margin-left: 0px;
+}
+
+#workspaces button:last-child {
+    margin-right: 0px;
+}
+
+
+/* Notifications */
+widget #custom-notifications {
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 12px;
+}
+
+widget #custom-notifications.cc-open {
+    background: @color1;
+}
+
+
+/* Current Window Widget */
+window.empty #window {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Battery */
+#battery.charging,
+#battery.plugged {
+    color: @foreground;
+    background-color: @color2;
+}
+
+#battery:not(.plugged):not(.charging) {
+    background-color: shade(@color1, .68);
+}
+
+#battery.critical:not(.charging) {
+    background-color: @color1;
+    color: @foreground;
+    animation-name: blink;
+    animation-duration: .5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+/* Network and Wi-Fi */
+#network.disconnected {
+    padding-right: 15px;
+}
+
+
+/* Bluetooth */
+#bluetooth {
+     font-size: 14px;
+     padding: 0 10px;
+}
+
+#bluetooth.connected {
+    padding-right: 12px;
+}
+
+
+/* Pulse Audio */
+#pulseaudio {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Media Player Info */
+#custom-media {
+    box-shadow: none;
+    border: 2px solid @color3;
+    font-weight: 500;
+    transition: 200ms ease-in;
+}
+
+#custom-media:hover {
+    background: @color3;
+}
+
+
+/* Sensors */
+#temperature.critical {
+    background-color: @color1;
+}
+
+
+/* App Tray */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}

@@ -112,12 +112,6 @@
     	"escape": true
     },
 
-    "custom/control-center": {
-        "format": "loading control center...",
-        "return-type": "json",
-        "exec": "bash $HOME/.config/waybar/modules/control-center.sh"
-    }, 
-
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {

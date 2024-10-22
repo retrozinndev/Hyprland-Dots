@@ -1,0 +1,27 @@
+@keyframes blink {
+    0% {
+        background: @color3;
+    }
+
+    100% {
+        background: @color2;
+    }
+}
+
+@keyframes pick-attention { 
+    25% {
+        background: @color6;
+    }
+
+    50% {
+        background: @color1;
+    }
+
+    75% {
+        background: @color6;
+    }
+
+    100% {
+        background: @color1;
+    }
+}
