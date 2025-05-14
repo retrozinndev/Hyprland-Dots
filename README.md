@@ -1,2 +1,2 @@
-# hyprland-dots
-my personal hyprland dots for colorshell
+# Hyprland-Dots
+Personal hyprland dots for [colorshell](/retrozinndev/colorshell)
