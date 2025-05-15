@@ -4,7 +4,7 @@ source ./utils.sh
 
 Check_current_dir() {
     if ! [[ -f ./utils.sh ]]; then
-        Send_log warn "Looks like you're not in the repository directory!\nPlease run this script from the repo to avoid problems."
+        Send_log warn "Looks like you're not in the repository directory!\nPlease run this script from the repo directory to avoid problems."
         Send_log "Exiting"
         sleep .5
         exit 1
@@ -27,28 +27,34 @@ Clean_local() {
 
 Update_local() {
     for dir in ${config_dirs[@]}; do
-        if [[ -d "$XDG_CONFIG_HOME/$dir" ]]; then 
+        if [[ -d "$XDG_CONFIG_HOME/$dir" ]] || [[ -f "$XDG_CONFIG_HOME/$dir" ]]; then 
             Send_log "Copying ${dir^}"
             cp -r $XDG_CONFIG_HOME/$dir ./$dir
         else
-            Send_log "warn" "Looks like the ~/.config/$dir dir is in fault! Skipping it..."
+            Send_log "warn" "Looks like the ${dir^} dir is in fault! Skipping..."
         fi
     done
 
-    if [[ -d "$HOME/wallpapers" ]]; then
+    walls_dir=$WALLPAPERS
+
+    if [[ -z "$walls_dir" ]] || [[ ! -d "$walls_dir" ]]; then
+        walls_dir="$HOME/wallpapers"
+    fi
+
+    if [[ ! -z "$walls_dir" ]] && [[ -d "$walls_dir" ]]; then
         Send_log "Copying wallpapers"
         mkdir -p ./wallpapers
         cp -rf $HOME/wallpapers/* ./wallpapers
-    else
-        Send_log warn "Wallpapers dir could not be found in $HOME, skipping..."
+
+        return
     fi
 
-    printf "\nDone updating local repo!\n"
+    Send_log warn "Wallpapers dir could not be found in $HOME, skipping..."
 }
 
 Update_remote() {
     echo "Git status:"
-    git status
+    /bin/env git status
     echo "Please type one of the dotfiles you want to push now(only one dir):"
     printf "directory/file: "
     read chosen_dir 
@@ -59,13 +65,23 @@ Update_remote() {
         if [[ $add_more_dirs =~ y ]]; then
             Update_remote
         else
-            echo "Fine then! What will be the commit message? (You can use emojis by typing its name between colons, e.g.: ´:tada:´)"
+            commit_message=""
+            commit_description=""
+            push_changes=""
+            echo -en "(You can use emojis by typing its name between colons, e.g.: \":tada:\" for \"🎉\").\nCommit message: "
             read commit_message
-            echo "Committing your changes..."
+            echo -n "Type commit description(leave blank if none): "
+            read commit_description
+
+            echo "Committing changes..."
+            [[ ! -z $commit_description ]] && \
+                git commit -m "$commit_message" -m "$commit_description" || \
             git commit -m "$commit_message"
-            echo -n "Done! Do you want to push changes now? If not, you'll be redirected to pre-commit process. [y/n] "
+
+            echo -n "Done! Do you want to push? If not, you'll go back to file selection [y/n] "
             read push_changes
-            if [[ $push_changes =~ y ]]; then
+
+            if [[ $push_changes =~ "^y" ]]; then
                 git push
                 echo "Done pushing!!"
             else

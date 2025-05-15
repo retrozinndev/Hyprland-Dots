@@ -14,7 +14,9 @@
 # scripts.
 # -------------
 config_dirs=(
-    "hypr" 
+    "hypr/user" 
+    "hypr/hyprsunset.conf" 
+    "hypr/hyprpaper.conf" 
     "fastfetch" 
 )
 
