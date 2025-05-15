@@ -43,7 +43,7 @@ if [[ $input =~ "y" ]]; then
     Send_log "previous clone found"
 
     cd ./colorshell
-    sh install.sh
+    sh install.sh dots
     cd ..
 
 	for dir in ${config_dirs[@]}; do
