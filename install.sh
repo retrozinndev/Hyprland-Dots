@@ -50,8 +50,14 @@ if [[ $input =~ "y" ]]; then
         dest=$XDG_CONFIG_HOME/$dir
 
         echo "-> Installing $dir in $dest"
-        mkdir -p $dest
-        cp -rf ./$dir/* $dest
+        mkdir -p "$dest" # create parents
+
+        if [[ -f "./$dir" ]]; then
+            rm -r "$dest" # delete unused directory
+            cp -f ./$dir "$dest" # copy actual file
+        else
+            cp -rf ./$dir/* "$dest" # force-copy content
+        fi
     done
 
     echo "Cleaning..."
