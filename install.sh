@@ -39,7 +39,9 @@ if [[ $input =~ "y" ]]; then
 	Send_log "Starting installation...\n"
 
     git clone "https://github.com/retrozinndev/colorshell.git" "colorshell"
-    sh ./colorshell/install.sh dots
+    cd ./colorshell
+    sh install.sh
+    cd ..
 
 	for dir in ${config_dirs[@]}; do
         dest=$XDG_CONFIG_HOME/$dir
