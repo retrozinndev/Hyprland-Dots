@@ -38,7 +38,10 @@ if [[ $input =~ "y" ]]; then
 
 	Send_log "Starting installation...\n"
 
-    git clone "https://github.com/retrozinndev/colorshell.git" "colorshell"
+    [[ ! -d ./colorshell ]] && \
+        git clone "https://github.com/retrozinndev/colorshell.git" "colorshell" || \
+    Send_log "previous clone found"
+
     cd ./colorshell
     sh install.sh
     cd ..
