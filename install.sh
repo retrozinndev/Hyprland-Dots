@@ -6,6 +6,8 @@ set -e
 trap "printf \"\nOk, quitting beacuse you entered an exit signal. (SIGINT).\n\"; exit 1" SIGINT
 trap "printf \"\nOh noo!! Some application just killed the script!\"; exit 2" SIGTERM
 
+XDG_CONFIG_HOME=$(sh -c '[[ ! -z "$XDG_CONFIG_HOME" ]] && echo "$XDG_CONFIG_HOME" || echo "$HOME/.config"')
+
 function Backup_previous() {
     echo "Would you like to make a backup of the current configuration? [y/n] "
     read answer
