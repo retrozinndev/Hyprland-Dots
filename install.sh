@@ -11,7 +11,7 @@ XDG_CONFIG_HOME=$(sh -c '[[ ! -z "$XDG_CONFIG_HOME" ]] && echo "$XDG_CONFIG_HOME
 function Backup_previous() {
     echo "Would you like to make a backup of the current configuration? [y/n] "
     read answer
-    if [[ $answer =~ "^y" ]]; then
+    if [[ $answer =~ ^y.*$ ]]; then
         sh ./backup-dots.sh
     else
         Send_log "Skipping backup"
@@ -34,7 +34,7 @@ echo "!!!WARNING!!! By running this script, you assume total responsability for 
 echo -n "Do you want to start the dotfiles installation? [y/n] "
 read input
 
-if [[ $input =~ "y" ]]; then
+if [[ $input =~ ^y.*$ ]]; then
 
     Backup_previous
 
