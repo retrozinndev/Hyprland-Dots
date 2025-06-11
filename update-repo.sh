@@ -19,9 +19,6 @@ Clean_local() {
         fi
     done
 
-    Send_log "info" "Cleaning wallpapers..."
-    rm -rf ./wallpapers
-
     echo "Done cleaning."
 }
 
@@ -34,22 +31,6 @@ Update_local() {
             Send_log "warn" "Looks like the ${dir^} dir is in fault! Skipping..."
         fi
     done
-
-    walls_dir=$WALLPAPERS
-
-    if [[ -z "$walls_dir" ]] || [[ ! -d "$walls_dir" ]]; then
-        walls_dir="$HOME/wallpapers"
-    fi
-
-    if [[ ! -z "$walls_dir" ]] && [[ -d "$walls_dir" ]]; then
-        Send_log "Copying wallpapers"
-        mkdir -p ./wallpapers
-        cp -rf $HOME/wallpapers/* ./wallpapers
-
-        return
-    fi
-
-    Send_log warn "Wallpapers dir could not be found in $HOME, skipping..."
 }
 
 Update_remote() {
