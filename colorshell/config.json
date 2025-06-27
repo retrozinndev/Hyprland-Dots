@@ -1,0 +1,17 @@
+{
+    "notifications": {
+        "timeout_low": 4000,
+        "timeout_normal": 6000,
+        "timeout_critical": 0
+    },
+    "night_light": {
+        "save_on_shutdown": true
+    },
+    "workspaces": {
+        "always_show_id": false,
+        "enable_helper": true
+    },
+    "clock": {
+        "date_format": "%A %d, %H:%M"
+    }
+}

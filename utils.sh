@@ -16,6 +16,7 @@
 config_dirs=(
     "hypr/user" 
     "hypr/hyprsunset.conf" 
+    "colorshell" 
     "fastfetch" 
 )
 
