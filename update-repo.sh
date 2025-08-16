@@ -33,50 +33,6 @@ Update_local() {
     done
 }
 
-Update_remote() {
-    echo "Git status:"
-    /bin/env git status
-    echo "Please type one of the dotfiles you want to push now(only one dir):"
-    printf "directory/file: "
-    read chosen_dir 
-    if [[ -d $chosen_dir ]] || [[ -f $chosen_dir ]]; then
-        git add $chosen_dir
-        echo -n "Would you like to add more dirs to queue? [y/n] "
-        read add_more_dirs
-        if [[ $add_more_dirs =~ y ]]; then
-            Update_remote
-        else
-            commit_message=""
-            commit_description=""
-            push_changes=""
-            echo -en "(You can use emojis by typing its name between colons, e.g.: \":tada:\" for \"🎉\").\nCommit message: "
-            read commit_message
-            echo -n "Type commit description(leave blank if none): "
-            read commit_description
-
-            echo "Committing changes..."
-            [[ ! -z $commit_description ]] && \
-                git commit -m "$commit_message" -m "$commit_description" || \
-            git commit -m "$commit_message"
-
-            echo -n "Done! Do you want to push? If not, you'll go back to file selection [y/n] "
-            read push_changes
-
-            if [[ $push_changes =~ "^y" ]]; then
-                git push
-                echo "Done pushing!!"
-            else
-                Update_remote
-            fi
-        fi
-    else
-        echo "Looks like this directory does not exist! Try taking a look at the dir list."
-        Update_remote
-    fi
-
-    
-}
-
 Check_current_dir
 Print_header
 
@@ -102,16 +58,10 @@ printf "\n"
 Clean_local
 Update_local
 
-echo -n "Would you like to commit to remote? (You will be prompted for commits) [y/n] "
-read answer
+echo "Ok, work's finished here! Have a great day!"
 
-if [[ $answer =~ y ]]; then
-    Update_remote
-    echo "Looks like it's done! Have a great day!"
-else
-    echo "Ok, work's finished here! Have a great day!"
+if command -v git > /dev/null 2>&1; then
+    git status
 fi
-
-env git status
 
 exit 0
