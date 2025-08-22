@@ -31,14 +31,15 @@ function Send_log() {
     log_message=$2
 
     case ${1,,} in
-        "^warn(ing)$")
+        warn | warning)
             color="\e[33m"
             log_type="warning"
             ;;
 
-        "^err(or)$")
+        err | error)
             color="\e[31m"
             log_type="error"
+            is_error=true
             ;;
 
         *) 
@@ -51,7 +52,9 @@ function Send_log() {
         log_message=$1
     fi
 
-    echo -e "${color}[$log_type]\e[0m $log_message"
+    [[ -z $is_error ]] && \
+        echo -e "${color}[$log_type]\e[0m $log_message" \
+    || echo -e "${color}[$log_type]\e[0m $log_message" > /dev/stderr
 }
 
 # -------------

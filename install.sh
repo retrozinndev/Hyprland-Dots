@@ -1,12 +1,11 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 source ./utils.sh
 
-set -e
-trap "printf \"\nOk, quitting beacuse you entered an exit signal. (SIGINT).\n\"; exit 1" SIGINT
+trap "printf \"\nOk, quitting beacuse you entered an exit signal. (SIGINT)\n\"; exit 1" SIGINT
 trap "printf \"\nOh noo!! Some application just killed the script!\"; exit 2" SIGTERM
 
-XDG_CONFIG_HOME=$(sh -c '[[ ! -z "$XDG_CONFIG_HOME" ]] && echo "$XDG_CONFIG_HOME" || echo "$HOME/.config"')
+XDG_CONFIG_HOME=`[[ -z "$XDG_CONFIG_HOME" ]] && echo "$HOME/.config" || echo "$XDG_CONFIG_HOME"`
 
 function Backup_previous() {
     echo "Would you like to make a backup of the current configuration? [y/n] "
@@ -35,20 +34,19 @@ echo -n "Do you want to start the dotfiles installation? [y/n] "
 read input
 
 if [[ $input =~ ^y.*$ ]]; then
-
     Backup_previous
+    Send_log "Starting installation...\n"
 
-	Send_log "Starting installation...\n"
+    [[ -d ./colorshell ]] && \
+        git clone https://github.com/retrozinndev/colorshell.git ./colorshell \
+    || Send_log "previous colorshell clone found"
 
-    [[ ! -d ./colorshell ]] && \
-        git clone "https://github.com/retrozinndev/colorshell.git" "colorshell" || \
-    Send_log "previous clone found"
+    cd ./colorshell && git fetch && git pull \
+        || (Send_log err "couldn't fetch remote. try deleting the colorshell directory" && exit 1)
 
-    cd ./colorshell
-    sh install.sh dots
-    cd ..
+    sh install.sh dots && cd ..
 
-	for dir in ${config_dirs[@]}; do
+    for dir in ${config_dirs[@]}; do
         dest=$XDG_CONFIG_HOME/$dir
 
         echo "-> Installing $dir in $dest"
@@ -62,8 +60,8 @@ if [[ $input =~ ^y.*$ ]]; then
         fi
     done
 
-    echo "Cleaning..."
-    rm -rf ./colorshell
+    Send_log "cleaning..."
+    rm -r ./colorshell
 
     echo "Ah yes! Looks like it finished, yay :3"
     echo -e "If you find any issue, please report it in: https://github.com/retrozinndev/Hyprland-Dots/issues"
