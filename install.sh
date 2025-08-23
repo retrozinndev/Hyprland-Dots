@@ -44,7 +44,8 @@ if [[ $input =~ ^y.*$ ]]; then
     cd ./colorshell && git fetch && git pull \
         || (Send_log err "couldn't fetch remote. try deleting the colorshell directory" && exit 1)
 
-    sh install.sh dots && cd ..
+    git checkout gtk4-ags3
+    sh install.sh -y && cd ..
 
     for dir in ${config_dirs[@]}; do
         dest=$XDG_CONFIG_HOME/$dir
