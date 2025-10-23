@@ -42,9 +42,9 @@ if [[ $input =~ ^y.*$ ]]; then
     || Send_log "previous colorshell clone found"
 
     cd ./colorshell && git fetch && git pull \
-        || (Send_log err "couldn't fetch remote. try deleting the colorshell directory" && exit 1)
+        || (Send_log err "couldn't fetch/pull from remote. try deleting the colorshell \
+directory and restarting installation" && exit 1)
 
-    git checkout gtk4-ags3
     sh install.sh -y && cd ..
 
     for dir in ${config_dirs[@]}; do
