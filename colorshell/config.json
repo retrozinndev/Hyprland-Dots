@@ -5,7 +5,8 @@
         "timeout_critical": 0,
 
         "position_h": "right",
-        "position_v": "top"
+        "position_v": "top",
+        "dismiss_on_unhover": true
     },
     "night_light": {
         "save_on_shutdown": true
@@ -15,6 +16,10 @@
         "enable_helper": true,
         "show_id_on_hover": false,
         "hide_if_single": true
+    },
+    "wallpaper": {
+        "color_mode": "darken",
+        "positioning": "contain"
     },
     "apps": {
         "term": "kitty",
