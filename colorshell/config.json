@@ -6,24 +6,26 @@
 
         "position_h": "right",
         "position_v": "top",
+
         "dismiss_on_unhover": true
     },
     "night_light": {
         "save_on_shutdown": true
     },
+    "wallpaper": {
+        "positioning": "cover",
+        "color_mode": "darken"
+    },
+    "aliases": {
+        "terminal": "kitty",
+        "media": "spotify-launcher",
+        "file_manager": "nautilus"
+    },
     "workspaces": {
         "always_show_id": false,
         "enable_helper": true,
-        "show_id_on_hover": false,
-        "hide_if_single": true
-    },
-    "wallpaper": {
-        "color_mode": "darken",
-        "positioning": "contain"
-    },
-    "apps": {
-        "term": "kitty",
-        "media": "spotify-launcher"
+        "hide_if_single": true,
+        "show_id_on_hover": true
     },
     "clock": {
         "date_format": "%A %d, %H:%M"
