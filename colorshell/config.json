@@ -7,7 +7,8 @@
         "position_h": "right",
         "position_v": "top",
 
-        "dismiss_on_unhover": true
+        "dismiss_on_unhover": false,
+        "hold_on_hover": true
     },
     "night_light": {
         "save_on_shutdown": true
