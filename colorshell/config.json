@@ -4,11 +4,10 @@
         "timeout_normal": 6000,
         "timeout_critical": 0,
 
-        "position_h": "right",
-        "position_v": "top",
-
         "dismiss_on_unhover": false,
-        "hold_on_hover": true
+        "hold_on_hover": true,
+        "position_h": "right",
+        "position_v": "top"
     },
     "night_light": {
         "save_on_shutdown": true
@@ -17,16 +16,16 @@
         "positioning": "cover",
         "color_mode": "darken"
     },
-    "aliases": {
-        "terminal": "kitty",
-        "media": "spotify-launcher",
-        "file_manager": "nautilus"
-    },
     "workspaces": {
         "always_show_id": false,
         "enable_helper": true,
         "hide_if_single": true,
         "show_id_on_hover": true
+    },
+    "aliases": {
+        "terminal": "kitty",
+        "media": "spotify-launcher",
+        "file_manager": "nautilus"
     },
     "clock": {
         "date_format": "%A %d, %H:%M"
