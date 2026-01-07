@@ -14,7 +14,8 @@
     },
     "wallpaper": {
         "positioning": "cover",
-        "color_mode": "darken"
+        "color_mode": "darken",
+        "splash": true
     },
     "workspaces": {
         "always_show_id": false,
