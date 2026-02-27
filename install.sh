@@ -48,17 +48,19 @@ for dir in ${config_dirs[@]}; do
     Send_log info "-> Installing $dir in $dest"
     mkdir -p `dirname $dest` # create parents
 
+    if [[ -d "./$dir" ]]; then
+        mkdir -p "$dest"
+
+        cp -rf ./$dir/* $dest
+        continue
+    fi
+
     if [[ -f "./$dir" ]]; then
         cp -rf ./$dir "$dest" # copy dir/file
         continue
     fi
 
-    if [[ -d "./$dir" ]]; then
-        cp -rf ./$dir/* $dest
-        continue
-    fi
-
-    Send_log warn "config \`$dir\` was skipped: not found / not accessible"
+    Send_log warn "Config \`$dir\` was skipped: not found or inaccessible"
 done
 
 echo "Ah yes! Looks like it finished, yipee :D"

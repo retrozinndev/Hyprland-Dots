@@ -14,11 +14,13 @@
 # scripts.
 # -------------
 config_dirs=(
-    "hypr/user" 
-    "hypr/hyprsunset.conf" 
-    "kitty/user.conf"
+    "hypr" 
+    "kitty" 
     "colorshell" 
-    "fastfetch" 
+    "fastfetch"
+)
+ignored_config_dirs=(
+    "hypr/hyprpaper.conf"
 )
 
 # -------------

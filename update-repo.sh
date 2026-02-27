@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-source ./utils.sh
 
 Check_current_dir() {
     if ! [[ -f ./utils.sh ]]; then
@@ -24,16 +23,24 @@ Clean_local() {
 
 Update_local() {
     for dir in ${config_dirs[@]}; do
-        if [[ -d "$XDG_CONFIG_HOME/$dir" ]] || [[ -f "$XDG_CONFIG_HOME/$dir" ]]; then 
-            Send_log "Copying ${dir^}"
-            cp -r $XDG_CONFIG_HOME/$dir ./$dir
-        else
-            Send_log "warn" "Looks like the ${dir^} dir is in fault! Skipping..."
-        fi
+        for ignored_dir in ${ignored_config_dirs[@]}; do
+            [[ $dir == $ignored_dir ]] && \
+                continue;
+
+            if [[ -d "$XDG_CONFIG_HOME/$dir" ]] || [[ -f "$XDG_CONFIG_HOME/$dir" ]]; then 
+                Send_log "Copying ${dir^}"
+                cp -r $XDG_CONFIG_HOME/$dir ./$dir
+            else
+                Send_log "warn" "Looks like the ${dir^} dir is in fault! Skipping..."
+            fi
+        done
     done
 }
 
 Check_current_dir
+
+source ./utils.sh
+
 Print_header
 
 printf "\n"
