@@ -17,6 +17,16 @@
         "color_mode": "darken",
         "splash": true
     },
+    "screen_recording": {
+        "include_audio": true
+    },
+    "idle": {
+        "lock_timeout": 2500,
+        "ignore_dbus_inhibit": false,
+        "ignore_systemd_inhibit": false,
+        "ignore_wayland_inhibit": false,
+        "inhibit_sleep": 2
+    },
     "workspaces": {
         "always_show_id": false,
         "enable_helper": true,
@@ -25,7 +35,7 @@
     },
     "aliases": {
         "terminal": "kitty",
-        "media": "spotify-launcher",
+        "media": "vibe",
         "file_manager": "nautilus"
     },
     "clock": {

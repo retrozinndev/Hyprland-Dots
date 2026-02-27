@@ -7,8 +7,8 @@
       "left": 2
     },
     "type": "kitty",
-    "source": "$HOME/.face",
-    "width": 26
+    "source": "$XDG_CONFIG_HOME/fastfetch/images/chisato_point.png",
+    "width": 36
   },
   "display": {
     "separator": " ",
