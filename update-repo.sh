@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 
-Check_current_dir() {
+function Check_current_dir() {
     if ! [[ -f ./utils.sh ]]; then
         Send_log warn "Looks like you're not in the repository directory!\nPlease run this script from the repo directory to avoid problems."
         Send_log "Exiting"
@@ -10,29 +10,59 @@ Check_current_dir() {
     fi
 }
 
-Clean_local() {
-    Send_log "info" "Cleaning current repo dotfiles..."
+function Clean_local() {
+    Send_log "Cleaning current repo dotfiles..."
     for dir in ${config_dirs[@]}; do
         if [[ -d "./$dir" ]]; then
             rm -rf ./$dir
         fi
     done
 
-    echo "Done cleaning."
+    Send_log "Done cleaning."
 }
 
-Update_local() {
-    for dir in ${config_dirs[@]}; do
-        for ignored_dir in ${ignored_config_dirs[@]}; do
-            [[ $dir == $ignored_dir ]] && \
-                continue;
+# ---------------
+# Checks if $1 is in the ignored files list.
+# Returns code 0 if item is in the ignore list, 0 if not
+# ---------------
+function Check_ignore() {
+    for ignore in ${ignored_config_dirs[@]}; do
+        [ "$1" == "$ignore" ] && \
+            return 0
+    done
 
-            if [[ -d "$XDG_CONFIG_HOME/$dir" ]] || [[ -f "$XDG_CONFIG_HOME/$dir" ]]; then 
-                Send_log "Copying ${dir^}"
-                cp -r $XDG_CONFIG_HOME/$dir ./$dir
-            else
-                Send_log "warn" "Looks like the ${dir^} dir is in fault! Skipping..."
-            fi
+    return 1
+}
+
+function Update_local() {
+    XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+
+    for item in ${config_dirs[@]}; do
+        local list=`find "$XDG_CONFIG_HOME/$item" -type f || echo -n`
+
+        if [ -z "$list" ]; then
+            Send_log warn "\"$item\" is in fault! We're skipping this one..."
+            continue
+        fi
+
+        Send_log "Copying item(s) from $item ($XDG_CONFIG_HOME/$item)"
+        for file in $list; do
+            local dir=`dirname "$file"`
+            local base_path=${file#"$XDG_CONFIG_HOME/"} # trims the "~/.config/" part, leaving the relative directory to the repo structure
+            local base_dir=`dirname "./$base_path"` # same thing here, but we get the base directory instead of the file name
+            
+            echo "dir: '$dir' ; base_name: './$base_path' ; base_dir: '$base_dir'"
+
+            # this only works with depth 1 for raw directories or with a full file path, unfortunately
+            (Check_ignore "$base_dir" || Check_ignore "$base_path") && \
+                continue
+
+            # mkdir if not present
+            [ ! -d "$base_dir" ] && \
+                mkdir -p "$base_dir"
+
+            #echo "-> \"$file\" : \".$base_path\"" # debuggin'
+            cp -f "$file" "./$base_path"
         done
     done
 }

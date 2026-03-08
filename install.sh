@@ -5,7 +5,8 @@ source ./utils.sh
 trap "printf \"\nOk, quitting beacuse you entered an exit signal. (SIGINT)\n\"; exit 1" SIGINT
 trap "printf \"\nOh noo!! Some application just killed the script!\"; exit 2" SIGTERM
 
-XDG_CONFIG_HOME=`[[ -z "$XDG_CONFIG_HOME" ]] && echo "$HOME/.config" || echo "$XDG_CONFIG_HOME"`
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
 
 function Backup_previous() {
     Ask "Would you like to make a backup of the current configuration?"
@@ -26,8 +27,11 @@ sleep .5
 
 echo "Welcome to retrozinndev's dotfiles installation script!"
 
+
+
 # Warn user of possible problems that can happen
 echo "!!!WARNING!!! By running this script, you assume total responsability for any issues that may occur with your filesystem"
+Send_log warn "It is recommended to backup your configuration files if you want to keep them."
 
 echo -n "Do you want to start the dotfiles installation? [y/n] "
 read input
@@ -37,18 +41,17 @@ if ! [[ $input =~ ^y(es)?$ ]]; then
     exit 0
 fi
 
+Send_log "Starting colorshell installation..."
 bash <(curl -s https://raw.githubusercontent.com/retrozinndev/colorshell/refs/heads/ryo/install.sh) -y
 
-source ${XDG_CACHE_HOME:-"$HOME/.cache"}/colorshell-installer/utils.sh
 
 
 for dir in ${config_dirs[@]}; do
-    dest=$XDG_CONFIG_HOME/$dir
+    local dest="$XDG_CONFIG_HOME/$dir"
 
-    Send_log info "-> Installing $dir in $dest"
-    mkdir -p `dirname $dest` # create parents
+    Send_log "-> Installing $dir in $dest"
 
-    if [[ -d "./$dir" ]]; then
+    if [ -d "./$dir" ]; then
         mkdir -p "$dest"
 
         cp -rf ./$dir/* $dest
@@ -56,6 +59,8 @@ for dir in ${config_dirs[@]}; do
     fi
 
     if [[ -f "./$dir" ]]; then
+        mkdir -p `dirname $dest`
+
         cp -rf ./$dir "$dest" # copy dir/file
         continue
     fi
@@ -65,4 +70,4 @@ done
 
 echo "Ah yes! Looks like it finished, yipee :D"
 echo -e "If you find any issue, please report it: https://github.com/retrozinndev/Hyprland-Dots/issues"
-    echo "Thanks for using colorshell + my dotfiles! I really appreciate it :P\n"
+    echo "Thanks for using colorshell + my dotfiles! I really appreciate it ദ്ദി ᗜˬᗜ✧\n"
