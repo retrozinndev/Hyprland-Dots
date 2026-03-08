@@ -7,8 +7,8 @@ Includes configs like `fastfetch`, my `kitty` user-specific configuration and `H
 I personally use the [MoreWaita](https://github.com/somepaulo/MoreWaita) icon theme, it has a lot of symbolic icons, so colorshell looks a lot better.
 
 ## Apps
-- [`valent`](https://valent.andyholmes.ca), desktop phone integration 
+- [`kdeconnect`](https://kdeconnect.kde.org), desktop phone integration (notifications, calls, file transfer, and a lot more!)
 - [`zen-browser`](https://zen-browser.app), beautiful firefox-based web browser
 - [`neovim`](https://neovim.io), text editor I use for... editing text files ([my config](https://github.com/retrozinndev/nvim.lua))
-- [`spotify-launcher`](https://archlinux.org/packages/extra/x86_64/spotify-launcher), the music player
+- [`amberol`](https://gitlab.gnome.org/World/amberol), the music player (it's pretty, simple and fast)
 - [`vesktop`](https://vesktop.vencord.dev), the best discord client
