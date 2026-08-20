@@ -13,9 +13,13 @@
         "save_on_shutdown": true
     },
     "wallpaper": {
+        "dirs": ["~/Wallpapers"],
         "positioning": "cover",
         "color_mode": "darken",
         "splash": true
+    },
+    "color": {
+        "backend": "default"
     },
     "screen_recording": {
         "include_audio": true
@@ -23,8 +27,7 @@
     "workspaces": {
         "always_show_id": false,
         "enable_helper": true,
-        "hide_if_single": true,
-        "show_id_on_hover": true
+        "hide_if_single": true
     },
     "runner": {
         "max_results": 30,

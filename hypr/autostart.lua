@@ -5,13 +5,14 @@ local use_uwsm = true;
 
 ---@type table<string>
 local autostart = {
-    "colorshell";
     "systemctl start --user hyprpolkitagent";
     "systemctl start --user gnome-keyring-daemon";
-    --"uwsm-app -- wl-paste --type text --watch cliphist store";
-    --"uwsm-app -- wl-paste --type image --watch cliphist store";
-
+    "systemctl start --user hyprpaper";
+    "systemctl start --user hyprsunset";
+    "colorshell";
     "fcitx5";
+    "wl-paste --type text --watch cliphist store";
+    "wl-paste --type image --watch cliphist store";
 };
 
 

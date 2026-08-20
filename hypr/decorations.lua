@@ -9,6 +9,9 @@ hl.config {
         resize_on_border = false;
 
         allow_tearing = false;
+
+        ["col.active_border"] = "#e6d47b";
+        ["col.inactive_border"] = "#000000";
     };
 
     decoration = {

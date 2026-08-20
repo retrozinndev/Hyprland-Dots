@@ -46,7 +46,7 @@ hl.window_rule({
     workspace = "e";
 });
 hl.window_rule({
-    match = { class = "vesktop|discord" };
+    match = { class = "^((dev\\.vencord\\.)?[vV]esktop|(com\\.discordapp\\.)?[dD]iscord)$" };
     workspace = "special:chat";
 });
 hl.window_rule({
@@ -141,6 +141,12 @@ hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" });
 hl.window_rule({
     name = "fix-anydesk-text-entry";
     match = { class = "Anydesk", title = "anydesk" };
+
+    no_initial_focus = true;
+});
+hl.window_rule({
+    name = "fix-krita";
+    match = { class = "^(org\\.kde\\.)?[Kk]rita$" };
 
     no_initial_focus = true;
 });

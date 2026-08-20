@@ -8,6 +8,7 @@ end
 
 local home = os.getenv("HOME");
 local env = {
+    -- Cursor
     XCURSOR_THEME = "Adwaita";
     XCURSOR_SIZE = 24;
     HYPRCURSOR_THEME = "Adwaita";
@@ -16,9 +17,12 @@ local env = {
     MOZ_ENABLE_WAYLAND = 1;
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 
-    XMODIFIERS = "@im=fcitx";
-    QT_IM_MODULE = "fcitx";
+    -- IME
+    XMODIFIERS = "@im=ibus";
+    QT_IM_MODULE = "wayland";
+    QT_IM_MODULES = "wayland;ibus";
     SDL_IM_MODULE = "wayland";
+
     GSK_RENDERER = "vulkan";
 
     QT_QPA_PLATFORM = "wayland";

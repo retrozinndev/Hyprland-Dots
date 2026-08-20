@@ -12,7 +12,13 @@ local servers = {
     },
     astro = {
         cmd = { "astro-ls", "--stdio" },
-        filetypes = { "astro" }
+        root_markers = { "package.json", "tsconfig.json", "astro.config.mjs" },
+        filetypes = { "astro" },
+        init_options = {
+        typescript = {
+            tsdk = "node_modules/typescript/lib"
+        }
+    },
     },
     pyright = {
         cmd = { "pyright-langserver", "--stdio" },
@@ -42,8 +48,8 @@ local servers = {
         cmd = { "vala-language-server" },
         filetypes = { "vala" }
     },
-    tsgo = {
-        cmd = { "tsgo", "--lsp", "--stdio" },
+    vtsls = {
+        cmd = { "vtsls", "--stdio" },
         filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
     },
     nil_ls = {
