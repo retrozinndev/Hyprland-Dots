@@ -19,6 +19,7 @@ config_dirs=(
     "colorshell" 
     "fastfetch"
     "nvim"
+    "zsh"
 )
 ignored_config_dirs=(
     "hypr/hyprpaper.conf"

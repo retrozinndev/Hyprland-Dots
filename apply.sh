@@ -98,5 +98,7 @@ done
 
 echo "Hey, looks like it's finished! Yipee :3"
 echo -e "If you find any issue, please report it: https://github.com/retrozinndev/.config/issues"
+echo -e "Also, if you installed the zsh config, you might want to source it in your \`.zshrc\`:"
+echo -e "source \$XDG_CONFIG_HOME/zsh/rc"
 echo -e "\nThanks for using my dotfiles! I really appreciate it ദ്ദി ᗜˬᗜ✧"
 echo "Have a great day!"

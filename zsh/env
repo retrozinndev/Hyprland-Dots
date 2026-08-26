@@ -1,0 +1,19 @@
+source ./utils
+
+export MANPAGER="nvim +Man!"
+export MPD_HOST="$XDG_RUNTIME_DIR/mpd.sock"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export SPICETIFY_INSTALL="$HOME/.spicetify"
+export OMP_CONFIG="/usr/share/oh-my-posh/themes/catppuccin_mocha.omp.json"
+export OMP_CACHE="$XDG_CACHE_HOME/oh-my-posh"
+
+# PATH
+Path_add "$HOME/.local/bin" # user bin
+Path_add "$PNPM_HOME/bin" # pnpm bin
+Path_add "$HOME/.local/share/bob/nvim-bin" # bob nvim
+Path_add "$JAVA_HOME/bin"
+Path_add "$SPICETIFY_INSTALL"
+
+
+# vim:ft=sh

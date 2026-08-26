@@ -1,0 +1,12 @@
+
+plugins=(
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+
+# load
+for name in ${plugins[@]}; do
+    source /usr/share/zsh/plugins/$name/$name.zsh
+done
+
+# vim:ft=sh

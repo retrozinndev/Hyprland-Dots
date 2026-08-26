@@ -1,0 +1,5 @@
+
+alias ls="ls -Aw1 --color=auto"
+
+
+# vim:ft=sh

@@ -1,0 +1,12 @@
+
+function Path_add() {
+    export PATH=$PATH:$@
+}
+
+function Load_omp() {
+    mkdir -p $OMP_CACHE
+    oh-my-posh init zsh --config "$OMP_CONFIG" > $OMP_CACHE/zsh
+    source $OMP_CACHE/zsh
+}
+
+# vim:ft=sh

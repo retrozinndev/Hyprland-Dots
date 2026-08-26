@@ -1,0 +1,8 @@
+source ./env
+source ./plugins
+
+Load_omp
+fastfetch
+
+
+# vim:ft=sh
